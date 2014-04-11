@@ -10,6 +10,7 @@ Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
 Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%version.tar.gz
 BuildRequires:	python-sip
+BuildRequires:	qt5-macros
 BuildRequires:	sed
 BuildRequires:	pkgconfig(dbus-python)
 BuildRequires:	pkgconfig(python)
