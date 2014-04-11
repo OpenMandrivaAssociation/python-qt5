@@ -8,8 +8,9 @@ Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%version.tar.gz
+Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%{version}.tar.gz
 BuildRequires:	python-sip
+BuildRequires:	qmake5
 BuildRequires:	qt5-macros
 BuildRequires:	sed
 BuildRequires:	pkgconfig(dbus-python)
