@@ -3,8 +3,8 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.2.1
-Release:	2
+Version:	5.3.1
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -14,7 +14,7 @@ BuildRequires:	qmake5
 BuildRequires:	qt5-macros
 BuildRequires:	sed
 BuildRequires:	pkgconfig(dbus-python)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(Qt5Bluetooth)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5DBus)
@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5WebKit)
 BuildRequires:	pkgconfig(Qt5WebKitWidgets)
+BuildRequires:	pkgconfig(Qt5WebSockets)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5XmlPatterns)
 BuildRequires:	pkgconfig(Qt5X11Extras)
@@ -52,6 +53,7 @@ Requires:	%{name}-positioning = %{EVRD}
 Requires:	%{name}-printsupport = %{EVRD}
 Requires:	%{name}-qml = %{EVRD}
 Requires:	%{name}-quick = %{EVRD}
+Requires:	%{name}-quickwidgets = %{EVRD}
 Requires:	%{name}-sensors = %{EVRD}
 Requires:	%{name}-serialport = %{EVRD}
 Requires:	%{name}-sql = %{EVRD}
@@ -59,6 +61,7 @@ Requires:	%{name}-svg = %{EVRD}
 Requires:	%{name}-test = %{EVRD}
 Requires:	%{name}-webkit = %{EVRD}
 Requires:	%{name}-webkitwidgets = %{EVRD}
+Requires:	%{name}-websockets = %{EVRD}
 Requires:	%{name}-widgets = %{EVRD}
 Requires:	%{name}-xmlpatterns = %{EVRD}
 Requires:	%{name}-x11extras = %{EVRD}
@@ -82,7 +85,6 @@ PyQt 5 core.
 %dir %{py_platsitedir}/PyQt5
 %{py_platsitedir}/PyQt5/uic
 %{py_platsitedir}/PyQt5/__init__.py*
-%{py_puresitedir}/dbus/*
 %{py_platsitedir}/PyQt5/Qt.so
 %{py_platsitedir}/PyQt5/QtCore.so
 %{_datadir}/sip/PyQt5/Qt
@@ -276,6 +278,21 @@ PyQt 5 quick.
 
 #------------------------------------------------------------
 
+%package quickwidgets
+Summary:	PyQt 5 quickwidgets
+Group:		Development/KDE and Qt
+Requires:	%{name}-quick = %{EVRD}
+
+%description quickwidgets
+PyQt 5 quickwidgets.
+
+%files quickwidgets
+%{py_platsitedir}/PyQt5/QtQuickWidgets.so
+%{_datadir}/sip/PyQt5/QtQuickWidgets
+
+
+#------------------------------------------------------------
+
 %package sensors
 Summary:	PyQt 5 sensors
 Group:		Development/KDE and Qt
@@ -371,6 +388,21 @@ PyQt 5 webkitwidgets.
 %files webkitwidgets
 %{py_platsitedir}/PyQt5/QtWebKitWidgets.so
 %{_datadir}/sip/PyQt5/QtWebKitWidgets
+
+#------------------------------------------------------------
+
+%package websockets
+Summary:	PyQt 5 WebSockets
+Group:		Development/KDE and Qt
+Requires:	%{name}-core = %{EVRD}
+
+%description websockets
+PyQt 5 websockets.
+
+%files websockets
+%{py_platsitedir}/PyQt5/QtWebSockets.so
+%{_datadir}/sip/PyQt5/QtWebSockets
+
 
 #------------------------------------------------------------
 
@@ -470,8 +502,8 @@ python ./configure.py \
 	--confirm-license
 
 sed -i -e "s,-fstack-protector,-fno-stack-protector,g" _Q*/Makefile
-sed -i -e "s,^LIBS .*= ,LIBS = $(python-config --libs) ,g" Qt*/Makefile _Q*/Makefile dbus/Makefile
-sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
+sed -i -e "s,^LIBS .*= ,LIBS = $(python-config --libs) ,g" */Makefile
+sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" */Makefile
 
 %make
 
