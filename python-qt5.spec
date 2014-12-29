@@ -432,7 +432,7 @@ PyQt 5 xmlpatterns.
 
 %files xmlpatterns
 %{py_platsitedir}/PyQt5/QtXmlPatterns.so
-%{py_sitedir}/PyQt5/QtXml.so
+%{py_platsitedir}/PyQt5/QtXml.so
 %{_datadir}/sip/PyQt5/QtXmlPatterns
 %{_datadir}/sip/PyQt5/QtXml/QtXmlmod.sip
 %{_datadir}/sip/PyQt5/QtXml/qdom.sip
