@@ -104,6 +104,7 @@ PyQt 5 dbus.
 
 %files dbus
 %{py_platsitedir}/PyQt5/QtDBus.so
+%{py_sitedir}/dbus/mainloop/pyqt5.so
 %{_datadir}/sip/PyQt5/QtDBus
 
 #------------------------------------------------------------
@@ -431,7 +432,11 @@ PyQt 5 xmlpatterns.
 
 %files xmlpatterns
 %{py_platsitedir}/PyQt5/QtXmlPatterns.so
+%{py_sitedir}/PyQt5/QtXml.so
 %{_datadir}/sip/PyQt5/QtXmlPatterns
+%{_datadir}/sip/PyQt5/QtXml/QtXmlmod.sip
+%{_datadir}/sip/PyQt5/QtXml/qdom.sip
+%{_datadir}/sip/PyQt5/QtXml/qxml.sip
 
 #------------------------------------------------------------
 
