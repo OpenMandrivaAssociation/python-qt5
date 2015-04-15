@@ -147,9 +147,15 @@ PyQt 5 gui.
 
 %files gui
 %{py_platsitedir}/PyQt5/QtGui.so
+%ifarch %{ix86} x86_64
 %{py_platsitedir}/PyQt5/_QOpenGLFunctions_2_0.so
-%{_datadir}/sip/PyQt5/QtGui
 %{_datadir}/sip/PyQt5/_QOpenGLFunctions_2_0
+%endif
+%ifarch %{armx}
+%{py_platsitedir}/PyQt5/_QOpenGLFunctions_ES2.so
+%{_datadir}/sip/PyQt5/_QOpenGLFunctions_ES2
+%endif
+%{_datadir}/sip/PyQt5/QtGui
 
 #------------------------------------------------------------
 
