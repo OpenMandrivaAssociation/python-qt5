@@ -11,7 +11,11 @@ Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
 Source0:	http://downloads.sourceforge.net/pyqt/PyQt-gpl-%{version}.tar.gz
 BuildRequires:	python-sip
 BuildRequires:	qmake5
+%if %mdvver >= 201500
 BuildRequires:	qt5-qtbase-macros
+%else
+BuildRequires:	qt5-macros
+%endif
 BuildRequires:	sed
 BuildRequires:	pkgconfig(dbus-python)
 BuildRequires:	pkgconfig(python3)
