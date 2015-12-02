@@ -3,7 +3,7 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.4.2
+Version:	5.5.1
 Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -18,7 +18,7 @@ BuildRequires:	qt5-macros
 %endif
 BuildRequires:	sed
 BuildRequires:	pkgconfig(dbus-python)
-BuildRequires:	pkgconfig(python2)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(Enginio)
 BuildRequires:	pkgconfig(Qt5Bluetooth)
 BuildRequires:	pkgconfig(Qt5Core)
@@ -26,9 +26,11 @@ BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	pkgconfig(Qt5Designer)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Help)
+BuildRequires:	pkgconfig(Qt5Location)
 BuildRequires:	pkgconfig(Qt5Multimedia)
 BuildRequires:	pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:	pkgconfig(Qt5Network)
+BuildRequires:	pkgconfig(Qt5Nfc)
 BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Positioning)
 BuildRequires:	pkgconfig(Qt5PrintSupport)
@@ -53,9 +55,11 @@ Requires:	%{name}-bluetooth = %{EVRD}
 Requires:	%{name}-designer = %{EVRD}
 Requires:	%{name}-enginio = %{EVRD}
 Requires:	%{name}-gui = %{EVRD}
+Requires:	%{name}-location = %{EVRD}
 Requires:	%{name}-multimedia = %{EVRD}
 Requires:	%{name}-multimediawidgets = %{EVRD}
 Requires:	%{name}-network = %{EVRD}
+Requires:	%{name}-nfc = %{EVRD}
 Requires:	%{name}-opengl = %{EVRD}
 Requires:	%{name}-positioning = %{EVRD}
 Requires:	%{name}-printsupport = %{EVRD}
@@ -196,6 +200,20 @@ PyQt 5 network.
 
 #------------------------------------------------------------
 
+%package nfc
+Summary:        PyQt 5 nfc
+Group:          Development/KDE and Qt
+Requires:       %{name}-core = %{EVRD}
+
+%description nfc
+PyQt 5 nfc.
+
+%files nfc
+%{py_platsitedir}/PyQt5/QtNfc.so
+%{_datadir}/sip/PyQt5/QtNfc
+
+#------------------------------------------------------------
+
 %package help
 Summary:	PyQt 5 help
 Group:		Development/KDE and Qt
@@ -207,6 +225,20 @@ PyQt 5 help.
 %files help
 %{py_platsitedir}/PyQt5/QtHelp.so
 %{_datadir}/sip/PyQt5/QtHelp
+
+#------------------------------------------------------------
+
+%package location
+Summary:        PyQt 5 location
+Group:          Development/KDE and Qt
+Requires:       %{name}-core = %{EVRD}
+
+%description location
+PyQt 5 location.
+
+%files location
+%{py_platsitedir}/PyQt5/QtLocation.so
+%{_datadir}/sip/PyQt5/QtLocation
 
 #------------------------------------------------------------
 
@@ -397,8 +429,7 @@ PyQt 5 test.
 %package       webchannel
 Summary:       PyQt 5 webchannel
 Group:         Development/KDE and Qt
-Requires:      %{name}-core = %{version}
-Requires:      sip-api(%{_sip_api_major}) >= %{_sip_api}
+Requires:      %{name}-core = %{EVRD}
 
 %description   webchannel
 PyQt 5 webchannel.
