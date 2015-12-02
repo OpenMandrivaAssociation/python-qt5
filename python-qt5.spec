@@ -397,8 +397,7 @@ PyQt 5 test.
 %package       webchannel
 Summary:       PyQt 5 webchannel
 Group:         Development/KDE and Qt
-Requires:      %{name}-core = %{version}
-Requires:      sip-api(%{_sip_api_major}) >= %{_sip_api}
+Requires:      %{name}-core = %{EVRD}
 
 %description   webchannel
 PyQt 5 webchannel.
