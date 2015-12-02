@@ -19,6 +19,7 @@ BuildRequires:	qt5-macros
 BuildRequires:	sed
 BuildRequires:	pkgconfig(dbus-python)
 BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(Enginio)
 BuildRequires:	pkgconfig(Qt5Bluetooth)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5DBus)
@@ -39,6 +40,7 @@ BuildRequires:	pkgconfig(Qt5SerialPort)
 BuildRequires:	pkgconfig(Qt5Sql)
 BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5WebChannel)
 BuildRequires:	pkgconfig(Qt5WebKit)
 BuildRequires:	pkgconfig(Qt5WebKitWidgets)
 BuildRequires:	pkgconfig(Qt5WebSockets)
@@ -49,6 +51,7 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-dbus = %{EVRD}
 Requires:	%{name}-bluetooth = %{EVRD}
 Requires:	%{name}-designer = %{EVRD}
+Requires:	%{name}-enginio = %{EVRD}
 Requires:	%{name}-gui = %{EVRD}
 Requires:	%{name}-multimedia = %{EVRD}
 Requires:	%{name}-multimediawidgets = %{EVRD}
@@ -64,6 +67,7 @@ Requires:	%{name}-serialport = %{EVRD}
 Requires:	%{name}-sql = %{EVRD}
 Requires:	%{name}-svg = %{EVRD}
 Requires:	%{name}-test = %{EVRD}
+Requires:	%{name}-webchannel = %{version}
 Requires:	%{name}-webkit = %{EVRD}
 Requires:	%{name}-webkitwidgets = %{EVRD}
 Requires:	%{name}-websockets = %{EVRD}
@@ -141,6 +145,21 @@ PyQt 5 bluetooth.
 
 #------------------------------------------------------------
 
+
+%package enginio
+Summary:        PyQt 5 enginio
+Group:          Development/KDE and Qt
+Requires:       %{name}-core = %{EVRD}
+
+%description enginio
+PyQt 5 enginio (cloud storage)
+
+%files enginio
+%{py_platsitedir}/PyQt5/Enginio.so
+%{_datadir}/sip/PyQt5/Enginio
+
+#------------------------------------------------------------
+
 %package gui
 Summary:	PyQt 5 gui
 Group:		Development/KDE and Qt
@@ -152,8 +171,8 @@ PyQt 5 gui.
 %files gui
 %{py_platsitedir}/PyQt5/QtGui.so
 %ifarch %{ix86} x86_64
-%{py_platsitedir}/PyQt5/_QOpenGLFunctions_2_0.so
-%{_datadir}/sip/PyQt5/_QOpenGLFunctions_2_0
+%{py_platsitedir}/PyQt5/_QOpenGLFunctions_*.so
+%{_datadir}/sip/PyQt5/_QOpenGLFunctions_*
 %endif
 %ifarch %{armx}
 %{py_platsitedir}/PyQt5/_QOpenGLFunctions_ES2.so
@@ -372,6 +391,21 @@ PyQt 5 test.
 %files test
 %{py_platsitedir}/PyQt5/QtTest.so
 %{_datadir}/sip/PyQt5/QtTest
+
+#------------------------------------------------------------
+
+%package       webchannel
+Summary:       PyQt 5 webchannel
+Group:         Development/KDE and Qt
+Requires:      %{name}-core = %{version}
+Requires:      sip-api(%{_sip_api_major}) >= %{_sip_api}
+
+%description   webchannel
+PyQt 5 webchannel.
+
+%files webchannel
+%{python_sitearch}/PyQt5/QtWebChannel.so
+%{_datadir}/sip/PyQt5/QtWebChannel
 
 #------------------------------------------------------------
 
