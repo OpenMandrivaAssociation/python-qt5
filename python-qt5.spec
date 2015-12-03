@@ -4,7 +4,7 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.5.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -572,8 +572,517 @@ PyQt 5 examples.
 
 #------------------------------------------------------------
 
+#------------------------------------------------------------
+
+### python2-qt5
+
+%define py2_name python2-qt5
+
+%package -n    python2-qt5
+Summary:       Set of Python 2 bindings for Trolltech's Qt application framework
+Group:         Development/KDE and Qt
+BuildRequires: pkgconfig(python2)
+BuildRequires: python2-sip
+BuildRequires: python2-dbus
+
+Provides:      python2-PyQt5 = %{version}-%{release}
+
+Requires:      %{py2_name}-core = %{version}
+Requires:      %{py2_name}-dbus = %{version}
+Requires:      %{py2_name}-bluetooth = %{version}
+Requires:      %{py2_name}-designer = %{version}
+Requires:      %{py2_name}-gui = %{version}
+Requires:      %{py2_name}-location = %{version}
+Requires:      %{py2_name}-multimedia = %{version}
+Requires:      %{py2_name}-multimediawidgets = %{version}
+Requires:      %{py2_name}-nfc = %{version}
+Requires:      %{py2_name}-network = %{version}
+Requires:      %{py2_name}-opengl = %{version}
+Requires:      %{py2_name}-positioning = %{version}
+Requires:      %{py2_name}-printsupport = %{version}
+Requires:      %{py2_name}-qml = %{version}
+Requires:      %{py2_name}-quick = %{version}
+Requires:      %{py2_name}-serialport = %{version}
+Requires:      %{py2_name}-sql = %{version}
+Requires:      %{py2_name}-svg = %{version}
+Requires:      %{py2_name}-test = %{version}
+Requires:      %{py2_name}-webchannel = %{version}
+Requires:      %{py2_name}-webkit = %{version}
+Requires:      %{py2_name}-webkitwidgets = %{version}
+Requires:      %{py2_name}-websockets = %{version}
+Requires:      %{py2_name}-widgets = %{version}
+Requires:      %{py2_name}-xml = %{version}
+Requires:      %{py2_name}-xmlpatterns = %{version}
+Requires:      %{py2_name}-x11extras = %{version}
+
+%description -n python2-qt5
+PyQt is a set of Python 2 bindings for Trolltech's Qt application framework.
+
+%files -n python2-qt5
+%doc NEWS README
+
+
+
+#------------------------------------------------------------
+
+%package -n python2-core
+Summary:	PyQt 5 core
+Group:		Development/KDE and Qt
+
+%description -n python2-core
+PyQt 5 core.
+
+%files -n python2-core
+%dir %{py2_platsitedir}/PyQt5
+%{py2_platsitedir}/PyQt5/uic
+%{py2_platsitedir}/PyQt5/__init__.py*
+%{py2_platsitedir}/PyQt5/Qt.so
+%{py2_platsitedir}/PyQt5/QtCore.so
+%{_datadir}/python2-sip/PyQt5/Qt
+%{_datadir}/python2-sip/PyQt5/QtCore
+
+#------------------------------------------------------------
+
+%package -n python2-dbus
+Summary:	PyQt 5 dbus
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-dbus
+PyQt 5 dbus.
+
+%files -n python2-dbus
+%{py2_platsitedir}/PyQt5/QtDBus.so
+%{py2_puresitedir}/dbus/mainloop/pyqt5.so
+%{_datadir}/python2-sip/PyQt5/QtDBus
+
+#------------------------------------------------------------
+
+%package -n python2-designer
+Summary:	PyQt 5 designer
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-designer
+PyQt 5 designer.
+
+%files -n python2-designer
+%{py2_platsitedir}/PyQt5/QtDesigner.so
+%{_datadir}/python2-sip/PyQt5/QtDesigner
+
+#------------------------------------------------------------
+
+%package -n python2-bluetooth
+Summary:	PyQt 5 bluetooth
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-bluetooth
+PyQt 5 bluetooth.
+
+%files -n python2-bluetooth
+%{py2_platsitedir}/PyQt5/QtBluetooth.so
+%{_datadir}/python2-sip/PyQt5/QtBluetooth
+
+#------------------------------------------------------------
+
+
+%package -n python2-enginio
+Summary:        PyQt 5 enginio
+Group:          Development/KDE and Qt
+Requires:       python2-qt5-core = %{EVRD}
+
+%description -n python2-enginio
+PyQt 5 enginio (cloud storage)
+
+%files -n python2-enginio
+%{py2_platsitedir}/PyQt5/Enginio.so
+%{_datadir}/python2-sip/PyQt5/Enginio
+
+#------------------------------------------------------------
+
+%package -n python2-gui
+Summary:	PyQt 5 gui
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-gui
+PyQt 5 gui.
+
+%files -n python2-gui
+%{py2_platsitedir}/PyQt5/QtGui.so
+%ifarch %{ix86} x86_64
+%{py2_platsitedir}/PyQt5/_QOpenGLFunctions_*.so
+%{_datadir}/python2-sip/PyQt5/_QOpenGLFunctions_*
+%endif
+%ifarch %{armx}
+%{py2_platsitedir}/PyQt5/_QOpenGLFunctions_ES2.so
+%{_datadir}/python2-sip/PyQt5/_QOpenGLFunctions_ES2
+%endif
+%{_datadir}/python2-sip/PyQt5/QtGui
+
+#------------------------------------------------------------
+
+%package -n python2-network
+Summary:	PyQt 5 network
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-network
+PyQt 5 network.
+
+%files -n python2-network
+%{py2_platsitedir}/PyQt5/QtNetwork.so
+%{_datadir}/python2-sip/PyQt5/QtNetwork
+
+#------------------------------------------------------------
+
+%package -n python2-nfc
+Summary:        PyQt 5 nfc
+Group:          Development/KDE and Qt
+Requires:       python2-qt5-core = %{EVRD}
+
+%description -n python2-nfc
+PyQt 5 nfc.
+
+%files -n python2-nfc
+%{py2_platsitedir}/PyQt5/QtNfc.so
+%{_datadir}/python2-sip/PyQt5/QtNfc
+
+#------------------------------------------------------------
+
+%package -n python2-help
+Summary:	PyQt 5 help
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-help
+PyQt 5 help.
+
+%files -n python2-help
+%{py2_platsitedir}/PyQt5/QtHelp.so
+%{_datadir}/python2-sip/PyQt5/QtHelp
+
+#------------------------------------------------------------
+
+%package -n python2-location
+Summary:        PyQt 5 location
+Group:          Development/KDE and Qt
+Requires:       python2-qt5-core = %{EVRD}
+
+%description -n python2-location
+PyQt 5 location.
+
+%files -n python2-location
+%{py2_platsitedir}/PyQt5/QtLocation.so
+%{_datadir}/python2-sip/PyQt5/QtLocation
+
+#------------------------------------------------------------
+
+%package -n python2-multimedia
+Summary:	PyQt 5 multimedia
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-multimedia
+PyQt 5 multimedia.
+
+%files -n python2-multimedia
+%{py2_platsitedir}/PyQt5/QtMultimedia.so
+%{_datadir}/python2-sip/PyQt5/QtMultimedia
+
+#------------------------------------------------------------
+
+%package -n python2-multimediawidgets
+Summary:	PyQt 5 multimediawidgets
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-multimediawidgets
+PyQt 5 multimediawidgets.
+
+%files -n python2-multimediawidgets
+%{py2_platsitedir}/PyQt5/QtMultimediaWidgets.so
+%{_datadir}/python2-sip/PyQt5/QtMultimediaWidgets
+
+#------------------------------------------------------------
+
+%package -n python2-opengl
+Summary:	PyQt 5 opengl
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-opengl
+PyQt 5 opengl.
+
+%files -n python2-opengl
+%{py2_platsitedir}/PyQt5/QtOpenGL.so
+%{_datadir}/python2-sip/PyQt5/QtOpenGL
+
+#------------------------------------------------------------
+
+%package -n python2-positioning
+Summary:	PyQt 5 positioning
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-positioning
+PyQt 5 positioning.
+
+%files -n python2-positioning
+%{py2_platsitedir}/PyQt5/QtPositioning.so
+%{_datadir}/python2-sip/PyQt5/QtPositioning
+
+#------------------------------------------------------------
+
+%package -n python2-printsupport
+Summary:	PyQt 5 printsupport
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-printsupport
+PyQt 5 printsupport
+
+%files -n python2-printsupport
+%{py2_platsitedir}/PyQt5/QtPrintSupport.so
+%{_datadir}/python2-sip/PyQt5/QtPrintSupport
+
+#------------------------------------------------------------
+
+%package -n python2-qml
+Summary:	PyQt 5 qml
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-qml
+PyQt 5 qml.
+
+%files -n python2-qml
+%{py2_platsitedir}/PyQt5/QtQml.so
+#{_qt5_plugindir}/PyQt5/libpyqt5qmlplugin.so
+%{_datadir}/python2-sip/PyQt5/QtQml
+
+#------------------------------------------------------------
+
+%package -n python2-quick
+Summary:	PyQt 5 quick
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-quick
+PyQt 5 quick.
+
+%files -n python2-quick
+%{py2_platsitedir}/PyQt5/QtQuick.so
+%{_datadir}/python2-sip/PyQt5/QtQuick
+
+#------------------------------------------------------------
+
+%package -n python2-quickwidgets
+Summary:	PyQt 5 quickwidgets
+Group:		Development/KDE and Qt
+Requires:	%{name}-quick = %{EVRD}
+
+%description -n python2-quickwidgets
+PyQt 5 quickwidgets.
+
+%files -n python2-quickwidgets
+%{py2_platsitedir}/PyQt5/QtQuickWidgets.so
+%{_datadir}/python2-sip/PyQt5/QtQuickWidgets
+
+
+#------------------------------------------------------------
+
+%package -n python2-sensors
+Summary:	PyQt 5 sensors
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-sensors
+PyQt 5 sensors.
+
+%files -n python2-sensors
+%{py2_platsitedir}/PyQt5/QtSensors.so
+%{_datadir}/python2-sip/PyQt5/QtSensors
+
+#------------------------------------------------------------
+
+%package -n python2-serialport
+Summary:	PyQt 5 serialport
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-serialport
+PyQt 5 serialport.
+
+%files -n python2-serialport
+%{py2_platsitedir}/PyQt5/QtSerialPort.so
+%{_datadir}/python2-sip/PyQt5/QtSerialPort
+
+#------------------------------------------------------------
+
+%package -n python2-sql
+Summary:	PyQt 5 sql
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-sql
+PyQt 5 sql.
+
+%files -n python2-sql
+%{py2_platsitedir}/PyQt5/QtSql.so
+%{_datadir}/python2-sip/PyQt5/QtSql
+
+#------------------------------------------------------------
+
+%package -n python2-svg
+Summary:	PyQt 5 svg
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-svg
+PyQt 5 svg.
+
+%files -n python2-svg
+%{py2_platsitedir}/PyQt5/QtSvg.so
+%{_datadir}/python2-sip/PyQt5/QtSvg
+
+#------------------------------------------------------------
+
+%package -n python2-test
+Summary:	PyQt 5 test
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-test
+PyQt 5 test.
+
+%files -n python2-test
+%{py2_platsitedir}/PyQt5/QtTest.so
+%{_datadir}/python2-sip/PyQt5/QtTest
+
+#------------------------------------------------------------
+
+%package -n python2-webchannel
+Summary:       PyQt 5 webchannel
+Group:         Development/KDE and Qt
+Requires:      python2-qt5-core = %{EVRD}
+
+%description -n python2-webchannel
+PyQt 5 webchannel.
+
+%files -n python2-webchannel
+%{python2_sitearch}/PyQt5/QtWebChannel.so
+%{_datadir}/python2-sip/PyQt5/QtWebChannel
+
+#------------------------------------------------------------
+
+%package -n python2-webkit
+Summary:	PyQt 5 Webkit
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-webkit
+PyQt 5 webkit.
+
+%files -n python2-webkit
+%{py2_platsitedir}/PyQt5/QtWebKit.so
+%{_datadir}/python2-sip/PyQt5/QtWebKit
+
+#------------------------------------------------------------
+
+%package -n python2-webkitwidgets
+Summary:	PyQt 5 webkitwidgets
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-webkitwidgets
+PyQt 5 webkitwidgets.
+
+%files -n python2-webkitwidgets
+%{py2_platsitedir}/PyQt5/QtWebKitWidgets.so
+%{_datadir}/python2-sip/PyQt5/QtWebKitWidgets
+
+#------------------------------------------------------------
+
+%package -n python2-websockets
+Summary:	PyQt 5 WebSockets
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-websockets
+PyQt 5 websockets.
+
+%files -n python2-websockets
+%{py2_platsitedir}/PyQt5/QtWebSockets.so
+%{_datadir}/python2-sip/PyQt5/QtWebSockets
+
+
+#------------------------------------------------------------
+
+%package -n python2-widgets
+Summary:	PyQt 5 widgets
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-widgets
+PyQt 5 widgets.
+
+%files -n python2-widgets
+%{py2_platsitedir}/PyQt5/QtWidgets.so
+%{_datadir}/python2-sip/PyQt5/QtWidgets
+
+#------------------------------------------------------------
+
+%package -n python2-xmlpatterns
+Summary:	PyQt 5 xmlpatterns
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-xmlpatterns
+PyQt 5 xmlpatterns.
+
+%files -n python2-xmlpatterns
+%{py2_platsitedir}/PyQt5/QtXmlPatterns.so
+%{py2_platsitedir}/PyQt5/QtXml.so
+%{_datadir}/python2-sip/PyQt5/QtXmlPatterns
+%{_datadir}/python2-sip/PyQt5/QtXml/QtXmlmod.sip
+%{_datadir}/python2-sip/PyQt5/QtXml/qdom.sip
+%{_datadir}/python2-sip/PyQt5/QtXml/qxml.sip
+
+#------------------------------------------------------------
+
+%package -n python2-x11extras
+Summary:	PyQt 5 x11extras
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-core = %{EVRD}
+
+%description -n python2-x11extras
+PyQt 5 x11extras.
+
+%files -n python2-x11extras
+%{py2_platsitedir}/PyQt5/QtX11Extras.so
+%{_datadir}/python2-sip/PyQt5/QtX11Extras
+
+#------------------------------------------------------------
+
+%package -n python2-devel
+Summary:	PyQt 5 devel
+Group:		Development/KDE and Qt
+Requires:	python2-qt5 = %{EVRD}
+Requires:	qt5-designer
+
+%description -n python2-devel
+PyQt 5 devel utilities.
+
+%files -n python2-devel
+
+#------------------------------------------------------------
+
+
 %prep
 %setup -q -n PyQt-gpl-%{version}
+cp -a . %{py2dir}
 
 %build
 export PATH=%{_qt5_bindir}:$PATH
@@ -588,9 +1097,39 @@ sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" */Makefile
 
 %make
 
+
+pushd %{py2dir}
+%{__python2} configure.py \
+  --sipdir=%{_datadir}/python2-sip/PyQt5 \
+  --no-qsci-api \
+  --assume-shared \
+  --confirm-license \
+  --no-timestamp \
+  --debug \
+  --verbose
+
+sed -i -e "s,-fstack-protector,-fno-stack-protector,g" _Q*/Makefile
+sed -i -e "s,^LIBS .*= ,LIBS = $(python2-config --libs) ,g" Qt*/Makefile _Q*/Makefile dbus/Makefile
+sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
+
+%make
+
 %install
+
+### python2-qt5 install
+pushd %{py2dir}
+%make_install INSTALL_ROOT=%{buildroot} -C %{py2dir}
+rm -fr %{buildroot}%{python3_sitearch}/PyQt5/uic/port_v2
+
+mkdir -p %{buildroot}%{_docdir}/%{py2_name}
+    cp -fr doc/html/* %{buildroot}%{_docdir}/%{py2_name}/
+
+mkdir %{buildroot}%{_docdir}/%{py2_name}/examples
+    cp -fr examples/* %{buildroot}%{_docdir}/%{py2_name}/examples/
+popd
+
 %makeinstall_std INSTALL_ROOT=%{buildroot}
-rm -fr %{buildroot}%{py_platsitedir}/PyQt5/uic/port_v3
+rm -fr %{buildroot}%{py_platsitedir}/PyQt5/uic/port_v2
 
 mkdir -p %{buildroot}%{_docdir}/%{name}
     cp -fr doc/html/* %{buildroot}%{_docdir}/%{name}/
