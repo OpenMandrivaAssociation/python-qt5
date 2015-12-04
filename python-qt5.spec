@@ -615,10 +615,10 @@ Requires:      %{py2_name}-xml = %{version}
 Requires:      %{py2_name}-xmlpatterns = %{version}
 Requires:      %{py2_name}-x11extras = %{version}
 
-%description -n python2-qt5-qt5
+%description -n python2-qt5
 PyQt is a set of Python 2 bindings for Trolltech's Qt application framework.
 
-%files -n python2-qt5-qt5
+%files -n python2-qt5
 %doc NEWS README
 
 
