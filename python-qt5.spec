@@ -611,7 +611,6 @@ Requires:      %{py2_name}-webkit = %{version}
 Requires:      %{py2_name}-webkitwidgets = %{version}
 Requires:      %{py2_name}-websockets = %{version}
 Requires:      %{py2_name}-widgets = %{version}
-Requires:      %{py2_name}-xml = %{version}
 Requires:      %{py2_name}-xmlpatterns = %{version}
 Requires:      %{py2_name}-x11extras = %{version}
 
