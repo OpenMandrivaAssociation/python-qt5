@@ -1,10 +1,11 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
+%define _disable_lto 1
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.5.1
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
