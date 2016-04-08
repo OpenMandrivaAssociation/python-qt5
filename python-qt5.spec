@@ -5,7 +5,7 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.5.1
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -44,6 +44,7 @@ BuildRequires:	pkgconfig(Qt5Sql)
 BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5WebChannel)
+BuildRequires:	pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:	pkgconfig(Qt5WebKit)
 BuildRequires:	pkgconfig(Qt5WebKitWidgets)
 BuildRequires:	pkgconfig(Qt5WebSockets)
@@ -73,6 +74,7 @@ Requires:	%{name}-sql = %{EVRD}
 Requires:	%{name}-svg = %{EVRD}
 Requires:	%{name}-test = %{EVRD}
 Requires:	%{name}-webchannel = %{version}
+Requires:	%{name}-webenginewidgets = %{EVRD}
 Requires:	%{name}-webkit = %{EVRD}
 Requires:	%{name}-webkitwidgets = %{EVRD}
 Requires:	%{name}-websockets = %{EVRD}
@@ -441,6 +443,21 @@ PyQt 5 webchannel.
 
 #------------------------------------------------------------
 
+%package webenginewidgets
+Summary:        PyQt 5 webenginewidgets
+Group:          Development/KDE and Qt
+Requires:       %{name}-core = %{EVRD}
+Requires:	%{name}-webchannel = %{EVRD}
+
+%description webenginewidgets
+PyQt 5 webenginewidgets.
+
+%files webenginewidgets
+%{py_platsitedir}/PyQt5/QtWebEngineWidgets.so
+%{_datadir}/sip/PyQt5/QtWebEngineWidgets
+
+#------------------------------------------------------------
+
 %package webkit
 Summary:	PyQt 5 Webkit
 Group:		Development/KDE and Qt
@@ -608,6 +625,7 @@ Requires:      %{py2_name}-sql = %{version}
 Requires:      %{py2_name}-svg = %{version}
 Requires:      %{py2_name}-test = %{version}
 Requires:      %{py2_name}-webchannel = %{version}
+Requires:      %{py2_name}-webenginewidgets = %{version}
 Requires:      %{py2_name}-webkit = %{version}
 Requires:      %{py2_name}-webkitwidgets = %{version}
 Requires:      %{py2_name}-websockets = %{version}
@@ -977,6 +995,21 @@ PyQt 5 webchannel.
 
 #------------------------------------------------------------
 
+%package -n python2-qt5-webenginewidgets
+Summary:        PyQt 5 webenginewidgets
+Group:          Development/KDE and Qt
+Requires:       python2-qt5-core = %{EVRD}
+Requires:	python2-qt5-webchannel = %{EVRD}
+
+%description -n python2-qt5-webenginewidgets
+PyQt 5 webenginewidgets.
+
+%files -n python2-qt5-webenginewidgets
+%{py2_platsitedir}/PyQt5/QtWebEngineWidgets.so
+%{_datadir}/python2-sip/PyQt5/QtWebEngineWidgets
+
+#------------------------------------------------------------
+
 %package -n python2-qt5-webkit
 Summary:	PyQt 5 Webkit
 Group:		Development/KDE and Qt
@@ -1082,6 +1115,8 @@ PyQt 5 devel utilities.
 
 %prep
 %setup -q -n PyQt-gpl-%{version}
+%apply_patches
+
 cp -a . %{py2dir}
 
 %build
