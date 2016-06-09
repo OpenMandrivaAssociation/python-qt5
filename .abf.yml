@@ -1,6 +1,2 @@
-removed_sources:
-  PyQt-gpl-5.3.1.tar.gz: c3554c33cfe589afb3e3a4ca2ad87e325da30945
-  PyQt-gpl-5.4.2.tar.gz: ceb5f6e088923beaa9885226a3e677fec089964e
-  PyQt-gpl-5.4.tar.gz: 057e6b32c43e673e79f876fb9b6f33d3072edfc2
 sources:
-  PyQt-gpl-5.5.1.tar.gz: d54cd7cf26b10f0b59fddce4a6a742f9697a94ff
+  PyQt5_gpl-5.6.tar.gz: 8920e4094470ff93f79e257c37c46f5cd0bff7ab
