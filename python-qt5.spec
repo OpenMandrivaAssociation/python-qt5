@@ -5,7 +5,7 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.6
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -1150,7 +1150,7 @@ python ./configure.py \
 sed -i -e "s,-fstack-protector,-fno-stack-protector,g" _Q*/Makefile
 sed -i -e "s,^LIBS .*= ,LIBS = $(python-config --libs) ,g" */Makefile
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" */Makefile
-
+sed -i -e "s#-flto##g" */Makefile
 %make
 
 
@@ -1166,7 +1166,7 @@ pushd %{py2dir}
 sed -i -e "s,-fstack-protector,-fno-stack-protector,g" _Q*/Makefile
 sed -i -e "s,^LIBS .*= ,LIBS = $(python2-config --libs) ,g" Qt*/Makefile _Q*/Makefile dbus/Makefile
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
-
+sed -i -e "s#-flto##g" */Makefile
 %make
 
 %install
