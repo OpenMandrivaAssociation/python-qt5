@@ -573,7 +573,7 @@ PyQt 5 devel utilities.
 %{_bindir}/pyrcc5
 %{_bindir}/pylupdate5
 %{_qt5_plugindir}/designer/*
-%{py_sitearch}/PyQt5/*.pyi
+%{python_sitearch}/PyQt5/*.pyi
 
 #------------------------------------------------------------
 
