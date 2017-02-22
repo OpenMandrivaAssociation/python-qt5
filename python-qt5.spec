@@ -1,17 +1,18 @@
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 %define _disable_lto 1
+%define _disable_ld_no_undefined 1
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.6
-Release:	6
+Version:	5.8
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
 Source0:	http://downloads.sourceforge.net/pyqt/PyQt5_gpl-%{version}.tar.gz
-Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
-BuildRequires:	python-sip
+#Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
+BuildRequires:	python-sip >= 4.19
 BuildRequires:	qmake5
 %if %mdvver >= 201500
 BuildRequires:	qt5-qtbase-macros
@@ -573,7 +574,10 @@ PyQt 5 devel utilities.
 %{_bindir}/pyrcc5
 %{_bindir}/pylupdate5
 %{_qt5_plugindir}/designer/*
-%{python_sitearch}/PyQt5/*.pyi
+%{python_sitearch}/PyQt5/pylupdate*
+%{python_sitearch}/PyQt5/pyrcc*
+%{_datadir}/sip/PyQt5/pylupdate
+%{_datadir}/sip/PyQt5/pyrcc
 
 #------------------------------------------------------------
 
@@ -1132,6 +1136,11 @@ Requires:	qt5-designer
 PyQt 5 devel utilities.
 
 %files -n python2-qt5-devel
+%{python2_sitearch}/PyQt5/pylupdate*
+%{python2_sitearch}/PyQt5/pyrcc*
+%{_datadir}/python2-sip/PyQt5/pylupdate
+%{_datadir}/python2-sip/PyQt5/pyrcc
+
 
 #------------------------------------------------------------
 
