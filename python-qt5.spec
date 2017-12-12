@@ -5,8 +5,8 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.8.2
-Release:	2
+Version:	5.9.2
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -110,7 +110,6 @@ PyQt 5 core.
 %{py_platsitedir}/PyQt5/Qt.so
 %{py_platsitedir}/PyQt5/QtCore.so
 %{py_platsitedir}/PyQt5/QtCore.pyi
-%{_datadir}/sip/PyQt5/Qt
 %{_datadir}/sip/PyQt5/QtCore
 %{_qt5_datadir}/qsci/api/python/PyQt5.api
 
@@ -190,7 +189,6 @@ PyQt 5 gui.
 %{py_platsitedir}/PyQt5/QtGui.so
 %{py_platsitedir}/PyQt5/QtGui.pyi
 %{py_platsitedir}/PyQt5/_QOpenGLFunctions_*.so
-%{_datadir}/sip/PyQt5/_QOpenGLFunctions_*
 %{_datadir}/sip/PyQt5/QtGui
 
 #------------------------------------------------------------
@@ -630,36 +628,6 @@ PyQt 5 devel utilities.
 %{_qt5_plugindir}/designer/*
 %{python_sitearch}/PyQt5/pylupdate*
 %{python_sitearch}/PyQt5/pyrcc*
-%{_datadir}/sip/PyQt5/pylupdate
-%{_datadir}/sip/PyQt5/pyrcc
-
-#------------------------------------------------------------
-
-%package doc
-Summary:	PyQt 5 documentation
-Group:		Development/KDE and Qt
-Buildarch:	noarch
-
-%description doc
-PyQt 5 documentation.
-
-%files doc
-%doc %{_docdir}/%{name}
-%exclude %{_docdir}/%{name}/examples
-#------------------------------------------------------------
-
-%package examples
-Summary:	PyQt 5 examples
-Group:		Development/KDE and Qt
-BuildArch:	noarch
-
-%description examples
-PyQt 5 examples.
-
-%files examples
-%doc %{_docdir}/%{name}/examples
-
-#------------------------------------------------------------
 
 #------------------------------------------------------------
 
@@ -728,7 +696,6 @@ PyQt 5 core.
 %{py2_platsitedir}/PyQt5/__init__.py*
 %{py2_platsitedir}/PyQt5/Qt.so
 %{py2_platsitedir}/PyQt5/QtCore.so
-%{_datadir}/python2-sip/PyQt5/Qt
 %{_datadir}/python2-sip/PyQt5/QtCore
 
 #------------------------------------------------------------
@@ -802,7 +769,6 @@ PyQt 5 gui.
 %files -n python2-qt5-gui
 %{py2_platsitedir}/PyQt5/QtGui.so
 %{py2_platsitedir}/PyQt5/_QOpenGLFunctions_*.so
-%{_datadir}/python2-sip/PyQt5/_QOpenGLFunctions_*
 %{_datadir}/python2-sip/PyQt5/QtGui
 
 #------------------------------------------------------------
@@ -1210,8 +1176,6 @@ PyQt 5 devel utilities.
 %files -n python2-qt5-devel
 %{python2_sitearch}/PyQt5/pylupdate*
 %{python2_sitearch}/PyQt5/pyrcc*
-%{_datadir}/python2-sip/PyQt5/pylupdate
-%{_datadir}/python2-sip/PyQt5/pyrcc
 
 
 #------------------------------------------------------------
@@ -1257,20 +1221,19 @@ sed -i -e "s#-flto##g" */Makefile
 pushd %{py2dir}
 %make_install INSTALL_ROOT=%{buildroot} -C %{py2dir}
 rm -fr %{buildroot}%{python3_sitearch}/PyQt5/uic/port_v2
-
-mkdir -p %{buildroot}%{_docdir}/%{py2_name}
-    cp -fr doc/html/* %{buildroot}%{_docdir}/%{py2_name}/
-
-mkdir %{buildroot}%{_docdir}/%{py2_name}/examples
-    cp -fr examples/* %{buildroot}%{_docdir}/%{py2_name}/examples/
+# Get rid of bits and pieces that aren't useful on Linux
+rm -rf	\
+	 %{buildroot}%{_datadir}/python2-sip/PyQt5/QAxContainer \
+	 %{buildroot}%{_datadir}/python2-sip/PyQt5/QtAndroidExtras \
+	 %{buildroot}%{_datadir}/python2-sip/PyQt5/QtMacExtras \
+	 %{buildroot}%{_datadir}/python2-sip/PyQt5/QtWinExtras
 popd
 
 %makeinstall_std INSTALL_ROOT=%{buildroot}
 rm -fr %{buildroot}%{py_platsitedir}/PyQt5/uic/port_v2
-
-mkdir -p %{buildroot}%{_docdir}/%{name}
-    cp -fr doc/html/* %{buildroot}%{_docdir}/%{name}/
-
-mkdir %{buildroot}%{_docdir}/%{name}/examples
-    cp -fr examples/* %{buildroot}%{_docdir}/%{name}/examples/
-
+# Get rid of bits and pieces that aren't useful on Linux
+rm -rf	\
+	 %{buildroot}%{_datadir}/sip/PyQt5/QAxContainer \
+	 %{buildroot}%{_datadir}/sip/PyQt5/QtAndroidExtras \
+	 %{buildroot}%{_datadir}/sip/PyQt5/QtMacExtras \
+	 %{buildroot}%{_datadir}/sip/PyQt5/QtWinExtras
