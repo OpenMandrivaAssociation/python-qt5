@@ -2,15 +2,16 @@
 %define debug_package %{nil}
 %define _disable_lto 1
 %define _disable_ld_no_undefined 1
+%define major %(echo %{version} |cut -d. -f1-2)
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.9.2
+Version:	5.10.0
 Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-Source0:	http://downloads.sourceforge.net/pyqt/PyQt5_gpl-%{version}.tar.gz
+Source0:	https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-%{major}/PyQt5_gpl-%{major}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 BuildRequires:	python-sip >= 4.19
 BuildRequires:	qmake5
@@ -205,6 +206,21 @@ PyQt 5 network.
 %{py_platsitedir}/PyQt5/QtNetwork.so
 %{py_platsitedir}/PyQt5/QtNetwork.pyi
 %{_datadir}/sip/PyQt5/QtNetwork
+
+#------------------------------------------------------------
+
+%package networkauth
+Summary:	PyQt 5 network authentication
+Group:		Development/KDE and Qt
+Requires:	%{name}-network = %{EVRD}
+
+%description networkauth
+PyQt 5 network authentication.
+
+%files networkauth
+%{py_platsitedir}/PyQt5/QtNetworkAuth.so
+%{py_platsitedir}/PyQt5/QtNetworkAuth.pyi
+%{_datadir}/sip/PyQt5/QtNetworkAuth
 
 #------------------------------------------------------------
 
@@ -787,6 +803,20 @@ PyQt 5 network.
 
 #------------------------------------------------------------
 
+%package -n python2-qt5-networkauth
+Summary:	PyQt 5 network authentication
+Group:		Development/KDE and Qt
+Requires:	python2-qt5-network = %{EVRD}
+
+%description -n python2-qt5-networkauth
+PyQt 5 network authentication.
+
+%files -n python2-qt5-networkauth
+%{py2_platsitedir}/PyQt5/QtNetworkAuth.so
+%{_datadir}/python2-sip/PyQt5/QtNetworkAuth
+
+#------------------------------------------------------------
+
 %package -n python2-qt5-nfc
 Summary:        PyQt 5 nfc
 Group:          Development/KDE and Qt
@@ -1182,7 +1212,7 @@ PyQt 5 devel utilities.
 
 
 %prep
-%setup -q -n PyQt5_gpl-%{version}
+%setup -q -n PyQt5_gpl-%{major}
 %apply_patches
 cp -a . %{py2dir}
 
@@ -1193,7 +1223,7 @@ python ./configure.py \
 	--qsci-api \
 	--confirm-license
 
-sed -i -e "s,-fstack-protector,-fno-stack-protector,g" _Q*/Makefile
+#sed -i -e "s,-fstack-protector-strong,,g" _Q*/Makefile
 sed -i -e "s,^LIBS .*= ,LIBS = $(python-config --libs) ,g" */Makefile
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" */Makefile
 sed -i -e "s#-flto##g" */Makefile
@@ -1209,7 +1239,6 @@ pushd %{py2dir}
   --debug \
   --verbose
 
-sed -i -e "s,-fstack-protector,-fno-stack-protector,g" _Q*/Makefile
 sed -i -e "s,^LIBS .*= ,LIBS = $(python2-config --libs) ,g" Qt*/Makefile _Q*/Makefile dbus/Makefile
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
 sed -i -e "s#-flto##g" */Makefile
