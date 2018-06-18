@@ -11,7 +11,7 @@ Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-Source0:	https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-%{major}/PyQt5_gpl-%{major}.tar.gz
+Source0:	https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-%{major}/PyQt5_gpl-%{version}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 BuildRequires:	python-sip >= 4.19
 BuildRequires:	qmake5
@@ -1213,7 +1213,7 @@ PyQt 5 devel utilities.
 
 
 %prep
-%setup -q -n PyQt5_gpl-%{major}
+%setup -q -n PyQt5_gpl-%{version}
 %apply_patches
 cp -a . %{py2dir}
 
