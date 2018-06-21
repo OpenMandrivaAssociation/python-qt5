@@ -14,7 +14,7 @@ Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
 Source0:	https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-%{major}/PyQt5_gpl-%{version}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
-Patch1:		PyQt5-Timeline.patch
+#Patch1:		PyQt5-Timeline.patch
 # QTest dropped waitForEvents
 Patch2:		PyQt5-qt511.patch
 
