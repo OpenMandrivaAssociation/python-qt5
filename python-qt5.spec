@@ -6,19 +6,17 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.10.1
+Version:	5.11.1
 Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-Source0:	https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-%{major}/PyQt5_gpl-%{version}.tar.gz
+Source0:	https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
-# QTest dropped waitForEvents
-Patch2:		PyQt5-qt511.patch
 
-BuildRequires:	python-sip >= 4.19
+BuildRequires:	python-sip >= 4.19.10
 BuildRequires:	qmake5
 %if %mdvver >= 201500
 BuildRequires:	qt5-qtbase-macros
