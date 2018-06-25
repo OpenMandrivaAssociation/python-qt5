@@ -1,10 +1,9 @@
-%bcond_without python2
-
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
 %define _disable_lto 1
 %define _disable_ld_no_undefined 1
 %define major %(echo %{version} |cut -d. -f1-2)
+%bcond_with python2
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
