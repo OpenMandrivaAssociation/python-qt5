@@ -658,7 +658,7 @@ PyQt 5 devel utilities.
 Summary:       Set of Python 2 bindings for Trolltech's Qt application framework
 Group:         Development/KDE and Qt
 BuildRequires: pkgconfig(python2)
-BuildRequires: python2-sip
+BuildRequires: python2-sip >= 4.19.10
 BuildRequires: python2-dbus
 
 Provides:      python2-PyQt5 = %{version}-%{release}
@@ -697,8 +697,6 @@ PyQt is a set of Python 2 bindings for Trolltech's Qt application framework.
 
 %files -n python2-qt5
 %doc NEWS README
-
-
 
 #------------------------------------------------------------
 
