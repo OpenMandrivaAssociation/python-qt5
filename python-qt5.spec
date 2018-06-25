@@ -3,6 +3,7 @@
 %define _disable_lto 1
 %define _disable_ld_no_undefined 1
 %define major %(echo %{version} |cut -d. -f1-2)
+%bcond_with python2
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
@@ -650,6 +651,7 @@ PyQt 5 devel utilities.
 
 #------------------------------------------------------------
 
+%if %{with python2}
 ### python2-qt5
 
 %define py2_name python2-qt5
@@ -1209,7 +1211,7 @@ PyQt 5 devel utilities.
 %files -n python2-qt5-devel
 %{python2_sitearch}/PyQt5/pylupdate*
 %{python2_sitearch}/PyQt5/pyrcc*
-
+%endif
 
 #------------------------------------------------------------
 
@@ -1217,7 +1219,9 @@ PyQt 5 devel utilities.
 %prep
 %setup -q -n PyQt5_gpl-%{version}
 %apply_patches
+%if %{with python2}
 cp -a . %{py2dir}
+%endif
 
 %build
 export PATH=%{_qt5_bindir}:$PATH
@@ -1233,6 +1237,7 @@ sed -i -e "s#-flto##g" */Makefile
 %make
 
 
+%if %{with python2}
 pushd %{py2dir}
 %{__python2} configure.py \
   --sipdir=%{_datadir}/python2-sip/PyQt5 \
@@ -1246,9 +1251,11 @@ sed -i -e "s,^LIBS .*= ,LIBS = $(python2-config --libs) ,g" Qt*/Makefile _Q*/Mak
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
 sed -i -e "s#-flto##g" */Makefile
 %make
+%endif
 
 %install
 
+%if %{with python2}
 ### python2-qt5 install
 pushd %{py2dir}
 %make_install INSTALL_ROOT=%{buildroot} -C %{py2dir}
@@ -1260,6 +1267,7 @@ rm -rf	\
 	 %{buildroot}%{_datadir}/python2-sip/PyQt5/QtMacExtras \
 	 %{buildroot}%{_datadir}/python2-sip/PyQt5/QtWinExtras
 popd
+%endif
 
 %makeinstall_std INSTALL_ROOT=%{buildroot}
 rm -fr %{buildroot}%{py_platsitedir}/PyQt5/uic/port_v2
