@@ -1222,6 +1222,7 @@ export PATH=%{_qt5_bindir}:$PATH
 
 python ./configure.py \
 	--qsci-api \
+	--no-dist-info \
 	--confirm-license
 
 #sed -i -e "s,-fstack-protector-strong,,g" _Q*/Makefile
@@ -1233,8 +1234,9 @@ sed -i -e "s#-flto##g" */Makefile
 
 pushd %{py2dir}
 %{__python2} configure.py \
-  --sipdir=%{_datadir}/python2-sip/PyQt5 \
+  --sipdir="%{py2_platsitedir}/PyQt5" \
   --no-qsci-api \
+  --no-dist-info \
   --assume-shared \
   --confirm-license \
   --debug \
