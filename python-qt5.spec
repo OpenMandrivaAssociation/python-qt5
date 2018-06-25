@@ -660,7 +660,7 @@ PyQt 5 devel utilities.
 Summary:       Set of Python 2 bindings for Trolltech's Qt application framework
 Group:         Development/KDE and Qt
 BuildRequires: pkgconfig(python2)
-BuildRequires: python2-sip
+BuildRequires: python2-sip >= 4.19.10
 BuildRequires: python2-dbus
 
 Provides:      python2-PyQt5 = %{version}-%{release}
@@ -699,8 +699,6 @@ PyQt is a set of Python 2 bindings for Trolltech's Qt application framework.
 
 %files -n python2-qt5
 %doc NEWS README
-
-
 
 #------------------------------------------------------------
 
@@ -1228,6 +1226,7 @@ export PATH=%{_qt5_bindir}:$PATH
 
 python ./configure.py \
 	--qsci-api \
+	--no-dist-info \
 	--confirm-license
 
 #sed -i -e "s,-fstack-protector-strong,,g" _Q*/Makefile
@@ -1240,8 +1239,9 @@ sed -i -e "s#-flto##g" */Makefile
 %if %{with python2}
 pushd %{py2dir}
 %{__python2} configure.py \
-  --sipdir=%{_datadir}/python2-sip/PyQt5 \
+  --sipdir="%{py2_platsitedir}/PyQt5" \
   --no-qsci-api \
+  --no-dist-info \
   --assume-shared \
   --confirm-license \
   --debug \
