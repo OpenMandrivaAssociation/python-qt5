@@ -3,7 +3,12 @@
 %define _disable_lto 1
 %define _disable_ld_no_undefined 1
 %define major %(echo %{version} |cut -d. -f1-2)
-%bcond_with python2
+%bcond_without python2
+%if %{with python2}
+# While we build python2 bits that aren't
+# compatible with the py3 bytecompiler
+%define _python_bytecompile_errors_terminate_build 0
+%endif
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
@@ -64,7 +69,6 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-dbus = %{EVRD}
 Requires:	%{name}-bluetooth = %{EVRD}
 Requires:	%{name}-designer = %{EVRD}
-Requires:	%{name}-enginio = %{EVRD}
 Requires:	%{name}-gui = %{EVRD}
 Requires:	%{name}-location = %{EVRD}
 Requires:	%{name}-multimedia = %{EVRD}
@@ -163,22 +167,6 @@ PyQt 5 bluetooth.
 %{py_platsitedir}/PyQt5/QtBluetooth.so
 %{py_platsitedir}/PyQt5/QtBluetooth.pyi
 %{_datadir}/sip/PyQt5/QtBluetooth
-
-#------------------------------------------------------------
-
-
-%package enginio
-Summary:        PyQt 5 enginio
-Group:          Development/KDE and Qt
-Requires:       %{name}-core = %{EVRD}
-
-%description enginio
-PyQt 5 enginio (cloud storage)
-
-%files enginio
-%{py_platsitedir}/PyQt5/Enginio.so
-%{py_platsitedir}/PyQt5/Enginio.pyi
-%{_datadir}/sip/PyQt5/Enginio
 
 #------------------------------------------------------------
 
@@ -762,21 +750,6 @@ PyQt 5 bluetooth.
 
 #------------------------------------------------------------
 
-
-%package -n python2-qt5-enginio
-Summary:        PyQt 5 enginio
-Group:          Development/KDE and Qt
-Requires:       python2-qt5-core = %{EVRD}
-
-%description -n python2-qt5-enginio
-PyQt 5 enginio (cloud storage)
-
-%files -n python2-qt5-enginio
-%{py2_platsitedir}/PyQt5/Enginio.so
-%{_datadir}/python2-sip/PyQt5/Enginio
-
-#------------------------------------------------------------
-
 %package -n python2-qt5-gui
 Summary:	PyQt 5 gui
 Group:		Development/KDE and Qt
@@ -1238,8 +1211,9 @@ sed -i -e "s#-flto##g" */Makefile
 
 %if %{with python2}
 pushd %{py2dir}
+sed -i -e 's,from PyQt5 import sip,import sip,g' configure.py
 %{__python2} configure.py \
-  --sipdir="%{py2_platsitedir}/PyQt5" \
+  --sipdir="%{_datadir}/python2-sip/PyQt5" \
   --no-qsci-api \
   --no-dist-info \
   --assume-shared \
@@ -1247,8 +1221,8 @@ pushd %{py2dir}
   --debug \
   --verbose
 
-sed -i -e "s,^LIBS .*= ,LIBS = $(python2-config --libs) ,g" Qt*/Makefile _Q*/Makefile dbus/Makefile
-sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
+sed -i -e "s,^LIBS .*= ,LIBS = $(python2-config --libs) ,g" Qt*/Makefile dbus/Makefile
+sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
 sed -i -e "s#-flto##g" */Makefile
 %make
 %endif
