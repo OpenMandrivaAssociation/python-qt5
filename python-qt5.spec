@@ -203,21 +203,6 @@ PyQt 5 gui.
 
 #------------------------------------------------------------
 
-%package enginio
-Summary:        PyQt 5 enginio
-Group:          Development/KDE and Qt
-Requires:       python2-qt5-core = %{EVRD}
-
-%description enginio
-PyQt 5 enginio (cloud storage)
-
-%files enginio
-%{py_platsitedir}/PyQt5/Enginio.so
-%{py_platsitedir}/PyQt5/Enginio.pyi
-%{_datadir}/sip/PyQt5/Enginio
-
-#------------------------------------------------------------
-
 %package network
 Summary:	PyQt 5 network
 Group:		Development/KDE and Qt
