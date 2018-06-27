@@ -1234,6 +1234,7 @@ sed -i -e 's,from PyQt5 import sip,import sip,g' configure.py
   --no-dist-info \
   --assume-shared \
   --confirm-license \
+  --sip="%{_bindir}/python2-sip" \
   --debug \
   --verbose
 
