@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(Qt5Bluetooth)
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5DBus)
 BuildRequires:	cmake(Qt5Designer)
+BuildRequires:	cmake(Qt5Enginio)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Help)
 BuildRequires:	pkgconfig(Qt5Location)
@@ -636,6 +637,7 @@ PyQt 5 devel utilities.
 %{_qt5_plugindir}/designer/*
 %{python_sitearch}/PyQt5/pylupdate*
 %{python_sitearch}/PyQt5/pyrcc*
+%{python_sitearch}/PyQt5/__pycache__
 
 #------------------------------------------------------------
 
@@ -747,6 +749,20 @@ PyQt 5 bluetooth.
 %files -n python2-qt5-bluetooth
 %{py2_platsitedir}/PyQt5/QtBluetooth.so
 %{_datadir}/python2-sip/PyQt5/QtBluetooth
+
+#------------------------------------------------------------
+ 
+%package -n python2-qt5-enginio
+Summary:        PyQt 5 enginio
+Group:          Development/KDE and Qt
+Requires:       python2-qt5-core = %{EVRD}
+
+%description -n python2-qt5-enginio
+PyQt 5 enginio (cloud storage)
+
+%files -n python2-qt5-enginio
+%{py2_platsitedir}/PyQt5/Enginio.so
+%{_datadir}/python2-sip/PyQt5/Enginio
 
 #------------------------------------------------------------
 
