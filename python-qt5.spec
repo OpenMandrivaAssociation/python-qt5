@@ -170,6 +170,21 @@ PyQt 5 bluetooth.
 %{_datadir}/sip/PyQt5/QtBluetooth
 
 #------------------------------------------------------------
+ 
+%package enginio
+Summary:        PyQt 5 enginio
+Group:          Development/KDE and Qt
+Requires:       %{name}-core = %{EVRD}
+
+%description enginio
+PyQt 5 enginio (cloud storage)
+
+%files enginio
+%{py_platsitedir}/PyQt5/Enginio.so
+%{py_platsitedir}/PyQt5/Enginio.pyi
+%{_datadir}/sip/PyQt5/Enginio
+
+#------------------------------------------------------------
 
 %package gui
 Summary:	PyQt 5 gui
