@@ -70,6 +70,7 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-dbus = %{EVRD}
 Requires:	%{name}-bluetooth = %{EVRD}
 Requires:	%{name}-designer = %{EVRD}
+Requires:	%{name}-enginio = %{EVRD}
 Requires:	%{name}-gui = %{EVRD}
 Requires:	%{name}-location = %{EVRD}
 Requires:	%{name}-multimedia = %{EVRD}
@@ -199,6 +200,21 @@ PyQt 5 gui.
 %{py_platsitedir}/PyQt5/QtGui.pyi
 %{py_platsitedir}/PyQt5/_QOpenGLFunctions_*.so
 %{_datadir}/sip/PyQt5/QtGui
+
+#------------------------------------------------------------
+
+%package enginio
+Summary:        PyQt 5 enginio
+Group:          Development/KDE and Qt
+Requires:       python2-qt5-core = %{EVRD}
+
+%description enginio
+PyQt 5 enginio (cloud storage)
+
+%files enginio
+%{py_platsitedir}/PyQt5/Enginio.so
+%{py_platsitedir}/PyQt5/Enginio.pyi
+%{_datadir}/sip/PyQt5/Enginio
 
 #------------------------------------------------------------
 
@@ -674,6 +690,7 @@ Requires:      %{py2_name}-core = %{version}
 Requires:      %{py2_name}-dbus = %{version}
 Requires:      %{py2_name}-bluetooth = %{version}
 Requires:      %{py2_name}-designer = %{version}
+Requires:      %{py2_name}-enginio = %{version}
 Requires:      %{py2_name}-gui = %{version}
 Requires:      %{py2_name}-location = %{version}
 Requires:      %{py2_name}-multimedia = %{version}
@@ -1249,6 +1266,7 @@ sed -i -e 's,from PyQt5 import sip,import sip,g' configure.py
   --no-dist-info \
   --assume-shared \
   --confirm-license \
+  --sip="%{_bindir}/python2-sip" \
   --debug \
   --verbose
 
