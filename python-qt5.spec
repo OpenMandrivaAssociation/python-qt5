@@ -12,12 +12,12 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.11.1
-Release:	2
+Version:	5.11.3
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-Source0:	https://downloads.sourceforge.net/project/pyqt/PyQt5/PyQt-%{version}/PyQt5_gpl-%{version}.tar.gz
+Source0:	http://download.sourceforge.net/pyqt/PyQt5_gpl-%{version}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
@@ -137,7 +137,7 @@ PyQt 5 dbus.
 %files dbus
 %{py_platsitedir}/PyQt5/QtDBus.so
 %{py_platsitedir}/PyQt5/QtDBus.pyi
-%{py_sitedir}/dbus/mainloop/pyqt5.so
+%{py_puresitedir}/dbus/mainloop/pyqt5.so
 %{_datadir}/sip/PyQt5/QtDBus
 
 #------------------------------------------------------------
@@ -484,7 +484,7 @@ Requires:      %{name}-core = %{EVRD}
 PyQt 5 webchannel.
 
 %files webchannel
-%{python_sitearch}/PyQt5/QtWebChannel.so
+%{py_platsitedir}/PyQt5/QtWebChannel.so
 %{py_platsitedir}/PyQt5/QtWebChannel.pyi
 %{_datadir}/sip/PyQt5/QtWebChannel
 
@@ -651,9 +651,9 @@ PyQt 5 devel utilities.
 %{_bindir}/pyrcc5
 %{_bindir}/pylupdate5
 %{_qt5_plugindir}/designer/*
-%{python_sitearch}/PyQt5/pylupdate*
-%{python_sitearch}/PyQt5/pyrcc*
-%{python_sitearch}/PyQt5/__pycache__
+%{py_platsitedir}/PyQt5/pylupdate*
+%{py_platsitedir}/PyQt5/pyrcc*
+%{py_platsitedir}/PyQt5/__pycache__
 
 #------------------------------------------------------------
 
@@ -1061,7 +1061,7 @@ Requires:      python2-qt5-core = %{EVRD}
 PyQt 5 webchannel.
 
 %files -n python2-qt5-webchannel
-%{python2_sitearch}/PyQt5/QtWebChannel.so
+%{py_platsitedir}/PyQt5/QtWebChannel.so
 %{_datadir}/python2-sip/PyQt5/QtWebChannel
 
 #------------------------------------------------------------
@@ -1213,8 +1213,8 @@ Requires:	qt5-designer
 PyQt 5 devel utilities.
 
 %files -n python2-qt5-devel
-%{python2_sitearch}/PyQt5/pylupdate*
-%{python2_sitearch}/PyQt5/pyrcc*
+%{py_platsitedir}/PyQt5/pylupdate*
+%{py_platsitedir}/PyQt5/pyrcc*
 %endif
 
 #------------------------------------------------------------
@@ -1245,7 +1245,7 @@ sed -i -e "s#-flto##g" */Makefile
 %if %{with python2}
 pushd %{py2dir}
 sed -i -e 's,from PyQt5 import sip,import sip,g' configure.py
-%{__python2} configure.py \
+python configure.py \
   --sipdir="%{_datadir}/python2-sip/PyQt5" \
   --no-qsci-api \
   --no-dist-info \
@@ -1266,8 +1266,8 @@ sed -i -e "s#-flto##g" */Makefile
 %if %{with python2}
 ### python2-qt5 install
 pushd %{py2dir}
-%make_install INSTALL_ROOT=%{buildroot} -C %{py2dir}
-rm -fr %{buildroot}%{python3_sitearch}/PyQt5/uic/port_v2
+%makeinstall_std INSTALL_ROOT=%{buildroot} -C %{py2dir}
+rm -fr %{buildroot}%{py3_platsitedir}/PyQt5/uic/port_v2
 # Get rid of bits and pieces that aren't useful on Linux
 rm -rf	\
 	 %{buildroot}%{_datadir}/python2-sip/PyQt5/QAxContainer \

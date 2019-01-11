@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   PyQt5_gpl-5.11.1.tar.gz: 0866824dfb327e569e395ccc2311c066530a187e
+sources:
+  PyQt5_gpl-5.11.3.tar.gz: 497c25e36ad982034d2a18075f34a67eb113fba8
