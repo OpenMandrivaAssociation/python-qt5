@@ -12,8 +12,8 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.11.1
-Release:	2
+Version:	5.11.3
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -1221,8 +1221,8 @@ PyQt 5 devel utilities.
 
 
 %prep
-%setup -q -n PyQt5_gpl-%{version}
-%apply_patches
+%autosetup -n PyQt5_gpl-%{version} -p1
+
 %if %{with python2}
 cp -a . %{py2dir}
 %endif
@@ -1239,7 +1239,7 @@ python ./configure.py \
 sed -i -e "s,^LIBS .*= ,LIBS = $(python-config --libs) ,g" */Makefile
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" */Makefile
 sed -i -e "s#-flto##g" */Makefile
-%make
+%make_build
 
 
 %if %{with python2}
@@ -1258,7 +1258,7 @@ sed -i -e 's,from PyQt5 import sip,import sip,g' configure.py
 sed -i -e "s,^LIBS .*= ,LIBS = $(python2-config --libs) ,g" Qt*/Makefile dbus/Makefile
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
 sed -i -e "s#-flto##g" */Makefile
-%make
+%make_build
 %endif
 
 %install
@@ -1277,7 +1277,7 @@ rm -rf	\
 popd
 %endif
 
-%makeinstall_std INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot}
 rm -fr %{buildroot}%{py_platsitedir}/PyQt5/uic/port_v2
 # Get rid of bits and pieces that aren't useful on Linux
 rm -rf	\
