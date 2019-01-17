@@ -666,6 +666,7 @@ PyQt 5 devel utilities.
 Summary:       Set of Python 2 bindings for Trolltech's Qt application framework
 Group:         Development/KDE and Qt
 BuildRequires: pkgconfig(python2)
+BuildRequires: python2dist(enum34)
 BuildRequires: python2-sip >= 4.19.10
 BuildRequires: python2-dbus
 
