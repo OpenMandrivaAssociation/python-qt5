@@ -12,8 +12,8 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.11.3
-Release:	2
+Version:	5.12
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -56,6 +56,7 @@ BuildRequires:	pkgconfig(Qt5SerialPort)
 BuildRequires:	pkgconfig(Qt5Sql)
 BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5RemoteObjects)
 BuildRequires:	pkgconfig(Qt5WebChannel)
 BuildRequires:	pkgconfig(Qt5WebEngine)
 BuildRequires:	pkgconfig(Qt5WebEngineCore)
