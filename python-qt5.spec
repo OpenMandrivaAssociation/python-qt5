@@ -59,7 +59,6 @@ BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5RemoteObjects)
 BuildRequires:	pkgconfig(Qt5WebChannel)
 BuildRequires:	pkgconfig(Qt5WebEngine)
-BuildRequires:	pkgconfig(Qt5WebEngineCore)
 BuildRequires:	pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:	pkgconfig(Qt5WebKit)
 BuildRequires:	pkgconfig(Qt5WebKitWidgets)
@@ -81,6 +80,7 @@ Requires:	%{name}-nfc = %{EVRD}
 Requires:	%{name}-opengl = %{EVRD}
 Requires:	%{name}-positioning = %{EVRD}
 Requires:	%{name}-printsupport = %{EVRD}
+Requires:	%{name}-remoteobjects = %{EVRD}
 Requires:	%{name}-qml = %{EVRD}
 Requires:	%{name}-quick = %{EVRD}
 Requires:	%{name}-quickwidgets = %{EVRD}
@@ -90,8 +90,6 @@ Requires:	%{name}-sql = %{EVRD}
 Requires:	%{name}-svg = %{EVRD}
 Requires:	%{name}-test = %{EVRD}
 Requires:	%{name}-webchannel = %{version}
-Requires:	%{name}-webenginecore = %{EVRD}
-Requires:	%{name}-webenginewidgets = %{EVRD}
 Requires:	%{name}-webkit = %{EVRD}
 Requires:	%{name}-webkitwidgets = %{EVRD}
 Requires:	%{name}-websockets = %{EVRD}
@@ -491,39 +489,17 @@ PyQt 5 webchannel.
 
 #------------------------------------------------------------
 
-%package webenginecore
-Summary:        PyQt 5 webenginecore
-Group:          Development/KDE and Qt
-Requires:       %{name}-core = %{EVRD}
-Requires:       %{name}-webchannel = %{EVRD}
+%package remoteobjects
+Summary:       PyQt 5 remoteobjects
+Group:         Development/KDE and Qt
+Requires:	%{name}-core = %{EVRD}
 
-%description webenginecore
-PyQt 5 webenginecore.
+%description remoteobjects
+PyQt 5 remoteobjects.
 
-%files webenginecore
-%{py_platsitedir}/PyQt5/QtWebEngineCore.so
-%{py_platsitedir}/PyQt5/QtWebEngineCore.pyi
-%{py_platsitedir}/PyQt5/QtWebEngine.so
-%{py_platsitedir}/PyQt5/QtWebEngine.pyi
-%{_datadir}/sip/PyQt5/QtWebEngineCore
-%dir %{_datadir}/sip/PyQt5/QtWebEngine
-%{_datadir}/sip/PyQt5/QtWebEngine/*.sip
-
-#------------------------------------------------------------
-
-%package webenginewidgets
-Summary:        PyQt 5 webenginewidgets
-Group:          Development/KDE and Qt
-Requires:       %{name}-core = %{EVRD}
-Requires:	%{name}-webchannel = %{EVRD}
-
-%description webenginewidgets
-PyQt 5 webenginewidgets.
-
-%files webenginewidgets
-%{py_platsitedir}/PyQt5/QtWebEngineWidgets.so
-%{py_platsitedir}/PyQt5/QtWebEngineWidgets.pyi
-%{_datadir}/sip/PyQt5/QtWebEngineWidgets
+%files remoteobjects
+%{py_platsitedir}/PyQt5/QtRemoteObjects.so
+%{_datadir}/sip/PyQt5/QtRemoteObjects
 
 #------------------------------------------------------------
 
@@ -687,6 +663,7 @@ Requires:      %{py2_name}-network = %{version}
 Requires:      %{py2_name}-opengl = %{version}
 Requires:      %{py2_name}-positioning = %{version}
 Requires:      %{py2_name}-printsupport = %{version}
+Requires:      %{py2_name}-remoteobjects = %{version}
 Requires:      %{py2_name}-qml = %{version}
 Requires:      %{py2_name}-quick = %{version}
 Requires:      %{py2_name}-serialport = %{version}
@@ -694,8 +671,6 @@ Requires:      %{py2_name}-sql = %{version}
 Requires:      %{py2_name}-svg = %{version}
 Requires:      %{py2_name}-test = %{version}
 Requires:      %{py2_name}-webchannel = %{version}
-Requires:      %{py2_name}-webenginecore = %{version}
-Requires:      %{py2_name}-webenginewidgets = %{version}
 Requires:      %{py2_name}-webkit = %{version}
 Requires:      %{py2_name}-webkitwidgets = %{version}
 Requires:      %{py2_name}-websockets = %{version}
@@ -1068,36 +1043,17 @@ PyQt 5 webchannel.
 
 #------------------------------------------------------------
 
-%package -n python2-qt5-webenginecore
-Summary:        PyQt 5 webenginecore
-Group:          Development/KDE and Qt
+%package -n    python2-remoteobjects
+Summary:       PyQt 5 remoteobjects
+Group:         Development/KDE and Qt
 Requires:       python2-qt5-core = %{EVRD}
-Requires:       python2-qt5-webchannel = %{EVRD}
 
-%description -n python2-qt5-webenginecore
-PyQt 5 webenginecore.
+%description -n python2-remoteobjects
+PyQt 5 remoteobjects.
 
-%files -n python2-qt5-webenginecore
-%{py2_platsitedir}/PyQt5/QtWebEngineCore.so
-%{py2_platsitedir}/PyQt5/QtWebEngine.so
-%{_datadir}/python2-sip/PyQt5/QtWebEngineCore
-%dir %{_datadir}/python2-sip/PyQt5/QtWebEngine
-%{_datadir}/python2-sip/PyQt5/QtWebEngine/*.sip
-
-#------------------------------------------------------------
-
-%package -n python2-qt5-webenginewidgets
-Summary:        PyQt 5 webenginewidgets
-Group:          Development/KDE and Qt
-Requires:       python2-qt5-core = %{EVRD}
-Requires:	python2-qt5-webchannel = %{EVRD}
-
-%description -n python2-qt5-webenginewidgets
-PyQt 5 webenginewidgets.
-
-%files -n python2-qt5-webenginewidgets
-%{py2_platsitedir}/PyQt5/QtWebEngineWidgets.so
-%{_datadir}/python2-sip/PyQt5/QtWebEngineWidgets
+%files -n python2-remoteobjects
+%{py2_platsitedir}/PyQt5/QtRemoteObjects.so
+%{_datadir}/python2-sip/PyQt5/QtRemoteObjects
 
 #------------------------------------------------------------
 
@@ -1140,7 +1096,6 @@ PyQt 5 websockets.
 %files -n python2-qt5-websockets
 %{py2_platsitedir}/PyQt5/QtWebSockets.so
 %{_datadir}/python2-sip/PyQt5/QtWebSockets
-
 
 #------------------------------------------------------------
 
