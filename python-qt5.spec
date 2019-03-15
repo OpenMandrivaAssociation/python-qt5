@@ -498,6 +498,7 @@ PyQt 5 remoteobjects.
 
 %files remoteobjects
 %{py_platsitedir}/PyQt5/QtRemoteObjects.so
+%{py_platsitedir}/PyQt5/QtRemoteObjects.pyi
 %{_datadir}/sip/PyQt5/QtRemoteObjects
 
 #------------------------------------------------------------
