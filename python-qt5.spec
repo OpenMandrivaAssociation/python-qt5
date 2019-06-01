@@ -13,7 +13,7 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.12.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -1043,15 +1043,15 @@ PyQt 5 webchannel.
 
 #------------------------------------------------------------
 
-%package -n    python2-remoteobjects
+%package -n    python2-qt5-remoteobjects
 Summary:       PyQt 5 remoteobjects
 Group:         Development/KDE and Qt
 Requires:       python2-qt5-core = %{EVRD}
 
-%description -n python2-remoteobjects
+%description -n python2-qt5-remoteobjects
 PyQt 5 remoteobjects.
 
-%files -n python2-remoteobjects
+%files -n python2-qt5-remoteobjects
 %{py2_platsitedir}/PyQt5/QtRemoteObjects.so
 %{_datadir}/python2-sip/PyQt5/QtRemoteObjects
 
