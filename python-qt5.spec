@@ -13,7 +13,7 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.12.2
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -1187,9 +1187,13 @@ cp -a . %{py2dir}
 %build
 export PATH=%{_qt5_bindir}:$PATH
 
+sed -i -e 's,from PyQt5 import sip,import sip,g' configure.py
+sed -i -e 's,PyQt5\.sip,sip,g' configure.py designer/pluginloader.cpp qmlscene/pluginloader.cpp
 python ./configure.py \
 	--qsci-api \
 	--no-dist-info \
+	--sipdir="%{_datadir}/sip/PyQt5" \
+	--sip="%{_bindir}/sip" \
 	--confirm-license
 
 #sed -i -e "s,-fstack-protector-strong,,g" _Q*/Makefile
@@ -1202,6 +1206,7 @@ sed -i -e "s#-flto##g" */Makefile
 %if %{with python2}
 pushd %{py2dir}
 sed -i -e 's,from PyQt5 import sip,import sip,g' configure.py
+sed -i -e 's,PyQt5\.sip,sip,g' configure.py designer/pluginloader.cpp qmlscene/pluginloader.cpp
 %{__python2} configure.py \
   --sipdir="%{_datadir}/python2-sip/PyQt5" \
   --no-qsci-api \
