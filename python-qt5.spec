@@ -3,7 +3,15 @@
 %define _disable_lto 1
 %define _disable_ld_no_undefined 1
 %define major %(echo %{version} |cut -d. -f1-2)
+%ifarch %{arm}
+# As of 2019/07/16, building python2 bits fails on armv7hnl
+# http://file-store.openmandriva.org/api/v1/file_stores/4dd6634985a2b05ce48847177102c671fb0d0304.log?show=true
+# Since this is hard to debug and probably python2 will go away soon
+# anyway, let's just ignore it for now
+%bcond_with python2
+%else
 %bcond_without python2
+%endif
 %if %{with python2}
 # While we build python2 bits that aren't
 # compatible with the py3 bytecompiler
