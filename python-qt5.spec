@@ -20,12 +20,12 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.13.1
-Release:	2
+Version:	5.14.2.dev2002051759
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-Source0:	https://www.riverbankcomputing.com/static/Downloads/PyQt5/%{version}/PyQt5_gpl-%{version}.tar.gz
+Source0:	https://www.riverbankcomputing.com/static/Downloads/PyQt5/PyQt5-%{version}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
@@ -1186,7 +1186,7 @@ PyQt 5 devel utilities.
 
 
 %prep
-%autosetup -n PyQt5_gpl-%{version} -p1
+%autosetup -n PyQt5-%{version} -p1
 
 %if %{with python2}
 cp -a . %{py2dir}
