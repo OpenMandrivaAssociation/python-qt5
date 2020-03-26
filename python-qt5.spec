@@ -6,7 +6,7 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.14.2.dev2002081016
+Version:	5.14.2.dev2003150552
 Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -606,7 +606,7 @@ PyQt 5 devel utilities.
 %{py_platsitedir}/PyQt5/bindings/QtBluetooth
 %{py_platsitedir}/PyQt5/bindings/QtSerialPort
 %{py_platsitedir}/PyQt5/pyrcc_main.py
-%{py_platsitedir}/PyQt5-5.14.2.dev2002081016.dist-info
+%{py_platsitedir}/PyQt5-*.dist-info
 %{_libdir}/qt5/plugins/PyQt5/libpyqt5qmlplugin.so
 %{_libdir}/qt5/plugins/designer/libpyqt5.so
 
