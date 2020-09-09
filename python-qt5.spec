@@ -11,7 +11,7 @@ Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-Source0:	https://www.riverbankcomputing.com/static/Downloads/PyQt5/PyQt5-%{version}.tar.gz
+Source0:	http://pypi.io/packages/source/p/pyqt/PyQt5-%{version}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
