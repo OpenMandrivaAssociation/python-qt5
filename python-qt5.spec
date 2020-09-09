@@ -6,7 +6,7 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.14.2.dev2003150552
+Version:	5.15.0
 Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -20,11 +20,7 @@ BuildRequires:	python-sip >= 5.1.0
 BuildRequires:	python-sip-qt5
 BuildRequires:	python-qt-builder
 BuildRequires:	qmake5
-%if %mdvver >= 201500
 BuildRequires:	qt5-qtbase-macros
-%else
-BuildRequires:	qt5-macros
-%endif
 BuildRequires:	sed
 BuildRequires:	pkgconfig(dbus-python)
 BuildRequires:	pkgconfig(python3)
@@ -161,14 +157,14 @@ PyQt 5 bluetooth.
 %{py_platsitedir}/PyQt5/QtBluetooth.abi3.so
 
 #------------------------------------------------------------
- 
+
 %package enginio
-Summary:        PyQt 5 enginio
-Group:          Development/KDE and Qt
-Requires:       %{name}-core = %{EVRD}
+Summary:	PyQt 5 enginio
+Group:		Development/KDE and Qt
+Requires:	%{name}-core = %{EVRD}
 
 %description enginio
-PyQt 5 enginio (cloud storage)
+PyQt 5 enginio (cloud storage).
 
 %files enginio
 %{py_platsitedir}/PyQt5/Enginio.abi3.so
@@ -215,9 +211,9 @@ PyQt 5 network authentication.
 #------------------------------------------------------------
 
 %package nfc
-Summary:        PyQt 5 nfc
-Group:          Development/KDE and Qt
-Requires:       %{name}-core = %{EVRD}
+Summary:	PyQt 5 nfc
+Group:		Development/KDE and Qt
+Requires:	%{name}-core = %{EVRD}
 
 %description nfc
 PyQt 5 nfc.
@@ -241,9 +237,9 @@ PyQt 5 help.
 #------------------------------------------------------------
 
 %package location
-Summary:        PyQt 5 location
-Group:          Development/KDE and Qt
-Requires:       %{name}-core = %{EVRD}
+Summary:	PyQt 5 location
+Group:		Development/KDE and Qt
+Requires:	%{name}-core = %{EVRD}
 
 %description location
 PyQt 5 location.
@@ -427,10 +423,10 @@ PyQt 5 test.
 
 #------------------------------------------------------------
 
-%package       webchannel
-Summary:       PyQt 5 webchannel
-Group:         Development/KDE and Qt
-Requires:      %{name}-core = %{EVRD}
+%package webchannel
+Summary:	PyQt 5 webchannel
+Group:		Development/KDE and Qt
+Requires:	%{name}-core = %{EVRD}
 
 %description   webchannel
 PyQt 5 webchannel.
@@ -441,8 +437,8 @@ PyQt 5 webchannel.
 #------------------------------------------------------------
 
 %package remoteobjects
-Summary:       PyQt 5 remoteobjects
-Group:         Development/KDE and Qt
+Summary:	PyQt 5 remoteobjects
+Group:		Development/KDE and Qt
 Requires:	%{name}-core = %{EVRD}
 
 %description remoteobjects
