@@ -636,7 +636,7 @@ sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrc
 rm -rf %{buildroot}%{python_sitearch}/PyQt5/uic/port_v2
 
 # ensure .so modules are executable for proper -debuginfo extraction
-for i in %{buildroot}%{python_sitearch}/PyQt5/*.so %{buildroot}%{python_sitearch}/dbus/mainloop/pyqt5.so ; do
+for i in %{buildroot}%{python_sitearch}/PyQt5/*.so ; do
     chmod a+rx $i
 done
 
