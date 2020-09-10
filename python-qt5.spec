@@ -123,7 +123,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 dbus.
 
 %files dbus
-%{py_platsitedir}/PyQt5/QtDBus.abi3.so
+#%{py_platsitedir}/PyQt5/QtDBus.abi3.so
 
 #------------------------------------------------------------
 
