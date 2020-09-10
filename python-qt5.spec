@@ -109,7 +109,7 @@ PyQt 5 core.
 %dir %{py_platsitedir}/PyQt5
 %{py_platsitedir}/PyQt5/__init__.py
 %dir %{py_platsitedir}/PyQt5/__pycache__
-%{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-*.opt-1.pyc
+#%{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-*.opt-1.pyc
 %{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-*.pyc
 
 #------------------------------------------------------------
@@ -280,10 +280,10 @@ PyQt 5 opengl.
 
 %files opengl
 %{py_platsitedir}/PyQt5/QtOpenGL.so
-%{py_platsitedir}/PyQt5/_QOpenGLFunctions_2_0.so
-%{py_platsitedir}/PyQt5/_QOpenGLFunctions_2_1.so
-%{py_platsitedir}/PyQt5/_QOpenGLFunctions_4_1_Core.so
-%{py_platsitedir}/PyQt5/bindings/QtOpenGL
+#%{py_platsitedir}/PyQt5/_QOpenGLFunctions_2_0.so
+#%{py_platsitedir}/PyQt5/_QOpenGLFunctions_2_1.so
+#%{py_platsitedir}/PyQt5/_QOpenGLFunctions_4_1_Core.so
+#%{py_platsitedir}/PyQt5/bindings/QtOpenGL
 
 #------------------------------------------------------------
 
