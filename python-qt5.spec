@@ -556,6 +556,7 @@ PyQt 5 devel utilities.
 %dir %{_datadir}/qt5/qsci/api
 %dir %{_datadir}/qt5/qsci/api/python
 %{_datadir}/qt5/qsci/api/python/PyQt5.api
+%{_datadir}/sip/PyQt5/*/*.sip
 %{py_platsitedir}/PyQt5/pylupdate.so
 %{py_platsitedir}/PyQt5/pyrcc.so
 %{py_platsitedir}/PyQt5/uic
