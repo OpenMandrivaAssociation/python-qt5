@@ -564,6 +564,7 @@ PyQt 5 devel utilities.
 %{py_platsitedir}/PyQt5/__pycache__/pylupdate_main.cpython-*.opt-1.pyc
 %{py_platsitedir}/PyQt5/__pycache__/pylupdate_main.cpython-*.pyc
 %{py_platsitedir}/PyQt5/pylupdate_main.py
+%if 0
 %{py_platsitedir}/PyQt5/bindings/QtPositioning
 %{py_platsitedir}/PyQt5/bindings/QtLocation
 %{py_platsitedir}/PyQt5/bindings/QtSvg
@@ -596,6 +597,7 @@ PyQt 5 devel utilities.
 %{py_platsitedir}/PyQt5/bindings/QtX11Extras
 %{py_platsitedir}/PyQt5/bindings/QtBluetooth
 %{py_platsitedir}/PyQt5/bindings/QtSerialPort
+%endif
 %{py_platsitedir}/PyQt5/pyrcc_main.py
 %{py_platsitedir}/PyQt5-*.dist-info
 %{_libdir}/qt5/plugins/PyQt5/libpyqt5qmlplugin.so
