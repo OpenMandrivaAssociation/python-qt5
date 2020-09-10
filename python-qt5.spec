@@ -107,11 +107,14 @@ PyQt 5 core.
 
 %files core
 %dir %{py_platsitedir}/PyQt5
+%{py_platsitedir}/PyQt5/Qt.so
+%{py_platsitedir}/PyQt5/QtCore.so
 %{py_platsitedir}/PyQt5/__init__.py
 %dir %{py_platsitedir}/PyQt5/__pycache__
-#%{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-*.opt-1.pyc
 %{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-*.pyc
-
+%dir %{py_platsitedir}/dbus
+%dir %{py_platsitedir}/dbus/mainloop
+%{py_platsitedir}/dbus/mainloop/pyqt5.so
 #------------------------------------------------------------
 
 %package dbus
@@ -280,10 +283,7 @@ PyQt 5 opengl.
 
 %files opengl
 %{py_platsitedir}/PyQt5/QtOpenGL.so
-#%{py_platsitedir}/PyQt5/_QOpenGLFunctions_2_0.so
-#%{py_platsitedir}/PyQt5/_QOpenGLFunctions_2_1.so
-#%{py_platsitedir}/PyQt5/_QOpenGLFunctions_4_1_Core.so
-#%{py_platsitedir}/PyQt5/bindings/QtOpenGL
+%{py_platsitedir}/PyQt5/_QOpenGLFunctions_ES2.so
 
 #------------------------------------------------------------
 
@@ -560,49 +560,45 @@ PyQt 5 devel utilities.
 %{py_platsitedir}/PyQt5/uic
 # Contains only the cache files for pyrcc, pylupdate
 %{py_platsitedir}/PyQt5/__pycache__/pyrcc_main.cpython-*.pyc
-%{py_platsitedir}/PyQt5/__pycache__/pyrcc_main.cpython-*.opt-1.pyc
-%{py_platsitedir}/PyQt5/__pycache__/pylupdate_main.cpython-*.opt-1.pyc
 %{py_platsitedir}/PyQt5/__pycache__/pylupdate_main.cpython-*.pyc
 %{py_platsitedir}/PyQt5/pylupdate_main.py
-%if 0
-%{py_platsitedir}/PyQt5/bindings/QtPositioning
-%{py_platsitedir}/PyQt5/bindings/QtLocation
-%{py_platsitedir}/PyQt5/bindings/QtSvg
-%{py_platsitedir}/PyQt5/bindings/QtPrintSupport
-%{py_platsitedir}/PyQt5/bindings/QtSql
-%{py_platsitedir}/PyQt5/bindings/QtQuickWidgets
-%{py_platsitedir}/PyQt5/bindings/QtWebKitWidgets
-%{py_platsitedir}/PyQt5/bindings/QtNetworkAuth
-%{py_platsitedir}/PyQt5/bindings/QtDBus
-%{py_platsitedir}/PyQt5/bindings/QtXmlPatterns
-%{py_platsitedir}/PyQt5/bindings/QtCore
-%{py_platsitedir}/PyQt5/bindings/QtXml
-%{py_platsitedir}/PyQt5/bindings/QtTest
-%{py_platsitedir}/PyQt5/bindings/QtRemoteObjects
-%{py_platsitedir}/PyQt5/bindings/QtQuick
-%{py_platsitedir}/PyQt5/bindings/QtMultimedia
-%{py_platsitedir}/PyQt5/bindings/QtGui
-%{py_platsitedir}/PyQt5/bindings/Enginio
-%{py_platsitedir}/PyQt5/bindings/QtNetwork
-%{py_platsitedir}/PyQt5/bindings/QtSensors
-%{py_platsitedir}/PyQt5/bindings/QtWebKit
-%{py_platsitedir}/PyQt5/bindings/QtWebSockets
-%{py_platsitedir}/PyQt5/bindings/QtQml
-%{py_platsitedir}/PyQt5/bindings/QtWebChannel
-%{py_platsitedir}/PyQt5/bindings/QtWidgets
-%{py_platsitedir}/PyQt5/bindings/QtMultimediaWidgets
-%{py_platsitedir}/PyQt5/bindings/QtDesigner
-%{py_platsitedir}/PyQt5/bindings/QtHelp
-%{py_platsitedir}/PyQt5/bindings/QtNfc
-%{py_platsitedir}/PyQt5/bindings/QtX11Extras
-%{py_platsitedir}/PyQt5/bindings/QtBluetooth
-%{py_platsitedir}/PyQt5/bindings/QtSerialPort
-%endif
+%{py_platsitedir}/PyQt5/*.pyi
+%{py_platsitedir}/PyQt5/QtPositioning
+%{py_platsitedir}/PyQt5/QtLocation
+%{py_platsitedir}/PyQt5/QtSvg
+%{py_platsitedir}/PyQt5/QtPrintSupport
+%{py_platsitedir}/PyQt5/QtSql
+%{py_platsitedir}/PyQt5/QtQuickWidgets
+%{py_platsitedir}/PyQt5/QtWebKitWidgets
+%{py_platsitedir}/PyQt5/QtNetworkAuth
+%{py_platsitedir}/PyQt5/QtDBus
+%{py_platsitedir}/PyQt5/QtXmlPatterns
+%{py_platsitedir}/PyQt5/QtCore
+%{py_platsitedir}/PyQt5/QtXml
+%{py_platsitedir}/PyQt5/QtTest
+%{py_platsitedir}/PyQt5/QtRemoteObjects
+%{py_platsitedir}/PyQt5/QtQuick
+%{py_platsitedir}/PyQt5/QtMultimedia
+%{py_platsitedir}/PyQt5/QtGui
+%{py_platsitedir}/PyQt5/Enginio
+%{py_platsitedir}/PyQt5/QtNetwork
+%{py_platsitedir}/PyQt5/QtSensors
+%{py_platsitedir}/PyQt5/QtWebKit
+%{py_platsitedir}/PyQt5/QtWebSockets
+%{py_platsitedir}/PyQt5/QtQml
+%{py_platsitedir}/PyQt5/QtWebChannel
+%{py_platsitedir}/PyQt5/QtWidgets
+%{py_platsitedir}/PyQt5/QtMultimediaWidgets
+%{py_platsitedir}/PyQt5/QtDesigner
+%{py_platsitedir}/PyQt5/QtHelp
+%{py_platsitedir}/PyQt5/QtNfc
+%{py_platsitedir}/PyQt5/QtX11Extras
+%{py_platsitedir}/PyQt5/QtBluetooth
+%{py_platsitedir}/PyQt5/QtSerialPort
 %{py_platsitedir}/PyQt5/pyrcc_main.py
 %{py_platsitedir}/PyQt5-*.dist-info
 %{_libdir}/qt5/plugins/PyQt5/libpyqt5qmlplugin.so
 %{_libdir}/qt5/plugins/designer/libpyqt5.so
-
 
 #------------------------------------------------------------
 
