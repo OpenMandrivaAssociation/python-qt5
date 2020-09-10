@@ -21,6 +21,7 @@ BuildRequires:	python-sip-qt5
 BuildRequires:	python-qt-builder
 BuildRequires:	qmake5
 BuildRequires:	qt5-qtbase-macros
+BuildRequires:	glibc-devel
 BuildRequires:	sed
 BuildRequires:	pkgconfig(dbus-python)
 BuildRequires:	pkgconfig(python3)
@@ -611,18 +612,34 @@ PyQt 5 devel utilities.
 
 %prep
 %autosetup -n PyQt5-%{version} -p1
-sip-build \
-	--confirm-license \
-	--no-make \
-	--api-dir %{_datadir}/qt5/qsci/api/python
 
 %build
-export PATH=%{_qt5_bindir}:$PATH
-%make_build -C build
+python configure.py \
+	--qmake="%{_qt5_bindir}/qmake" \
+	--sipdir=%{_datadir}/sip/PyQt5 \
+	--qsci-api \
+	--assume-shared \
+	--confirm-license \
+	--debug \
+	--verbose
+
+sed -i -e "s,-fstack-protector,-fno-stack-protector,g" _Q*/Makefile
+sed -i -e "s,^LIBS .*= ,LIBS = $(python3-config --libs) ,g" Qt*/Makefile _Q*/Makefile dbus/Makefile
+sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
+
+%make_build
 
 
 %install
-%make_install -C build INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot}
+
+rm -rf %{buildroot}%{python_sitearch}/PyQt5/uic/port_v2
+
+# ensure .so modules are executable for proper -debuginfo extraction
+for i in %{buildroot}%{python_sitearch}/PyQt5/*.so %{buildroot}%{python_sitearch}/dbus/mainloop/pyqt5.so ; do
+    chmod a+rx $i
+7done
+
 # Get rid of bits and pieces that aren't useful on Linux
 rm -rf	\
 	 %{buildroot}%{_datadir}/sip/PyQt5/QAxContainer \
