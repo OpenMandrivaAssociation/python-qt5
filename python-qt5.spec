@@ -112,9 +112,10 @@ PyQt 5 core.
 %{py_platsitedir}/PyQt5/__init__.py
 %dir %{py_platsitedir}/PyQt5/__pycache__
 %{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-*.pyc
-%dir %{py_platsitedir}/dbus
-%dir %{py_platsitedir}/dbus/mainloop
-%{py_platsitedir}/dbus/mainloop/pyqt5.so
+%dir %{py_puresitedir}/dbus
+%dir %{py_puresitedir}/dbus/mainloop
+%{py_puresitedir}/dbus/mainloop/pyqt5.so
+
 #------------------------------------------------------------
 
 %package dbus
