@@ -107,16 +107,10 @@ PyQt 5 core.
 
 %files core
 %dir %{py_platsitedir}/PyQt5
-%{py_platsitedir}/PyQt5/Qt.abi3.so
-%{py_platsitedir}/PyQt5/QtCore.abi3.so
 %{py_platsitedir}/PyQt5/__init__.py
-%dir %{py_platsitedir}/PyQt5/bindings
 %dir %{py_platsitedir}/PyQt5/__pycache__
 %{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-38.opt-1.pyc
 %{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-38.pyc
-%dir %{py_platsitedir}/dbus
-%dir %{py_platsitedir}/dbus/mainloop
-%{py_platsitedir}/dbus/mainloop/pyqt5.abi3.so
 
 #------------------------------------------------------------
 
