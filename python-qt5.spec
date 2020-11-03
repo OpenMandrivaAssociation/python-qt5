@@ -11,7 +11,7 @@ Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-Source0:	http://pypi.io/packages/source/p/pyqt/PyQt5-%{version}.tar.gz
+Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
@@ -284,7 +284,7 @@ PyQt 5 opengl.
 
 %files opengl
 %{py_platsitedir}/PyQt5/QtOpenGL.so
-%{py_platsitedir}/PyQt5/_QOpenGLFunctions_ES2.so
+%{py_platsitedir}/PyQt5/_QOpenGLFunctions_*.so
 
 #------------------------------------------------------------
 
@@ -416,6 +416,19 @@ PyQt 5 test.
 
 %files test
 %{py_platsitedir}/PyQt5/QtTest.so
+
+#------------------------------------------------------------
+
+%package text2speech
+Summary:	PyQt 5 Text to Speech module
+Group:		Development/KDE and Qt
+Requires:	%{name}-core = %{EVRD}
+
+%description text2speech
+PyQt 5 Text to Speech.
+
+%files text2speech
+%{py_platsitedir}/PyQt5/QtTextToSpeech.so
 
 #------------------------------------------------------------
 
@@ -584,9 +597,10 @@ python configure.py \
 	--confirm-license \
 	--verbose
 
-sed -i -e "s,-fstack-protector,-fno-stack-protector,g" _Q*/Makefile
+sed -i -e "s,-fstack-protector-all,-fno-stack-protector,g" _Q*/Makefile
 sed -i -e "s,^LIBS .*= ,LIBS = $(python3-config --libs) ,g" Qt*/Makefile _Q*/Makefile dbus/Makefile
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
+find . -name Makefile |xargs sed -i -e 's,-L/usr/lib,,g;s,-flto,-fno-lto,g'
 
 %make_build
 
