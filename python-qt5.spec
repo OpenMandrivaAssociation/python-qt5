@@ -49,6 +49,7 @@ BuildRequires:	pkgconfig(Qt5SerialPort)
 BuildRequires:	pkgconfig(Qt5Sql)
 BuildRequires:	pkgconfig(Qt5Svg)
 BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5TextToSpeech)
 BuildRequires:	pkgconfig(Qt5RemoteObjects)
 BuildRequires:	pkgconfig(Qt5WebChannel)
 BuildRequires:	pkgconfig(Qt5WebEngineWidgets)
@@ -600,7 +601,7 @@ python configure.py \
 sed -i -e "s,-fstack-protector-all,-fno-stack-protector,g" _Q*/Makefile
 sed -i -e "s,^LIBS .*= ,LIBS = $(python3-config --libs) ,g" Qt*/Makefile _Q*/Makefile dbus/Makefile
 sed -i -e "s#^LFLAGS .*= #LFLAGS = %{ldflags} #g" Qt*/Makefile _Q*/Makefile pyrcc/Makefile designer/Makefile dbus/Makefile qmlscene/Makefile
-find . -name Makefile |xargs sed -i -e 's,-L/usr/lib,,g;s,-flto,-fno-lto,g'
+find . -name Makefile |xargs sed -i -e 's,-L/usr/lib64,,g;s,-L/usr/lib,,g;s,-flto,-fno-lto,g'
 
 %make_build
 
