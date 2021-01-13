@@ -6,7 +6,7 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.15.1
+Version:	5.15.2
 Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
@@ -15,6 +15,9 @@ Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
+# Don't pass -fno-exceptions -- that breaks calibre
+# and doesn't really help much with compilers from this century
+Patch1:		pyqt5-exceptions.patch
 
 BuildRequires:	python-sip >= 5.1.0
 BuildRequires:	python-sip-qt5
@@ -113,9 +116,6 @@ PyQt 5 core.
 %{py_platsitedir}/PyQt5/__init__.py
 %dir %{py_platsitedir}/PyQt5/__pycache__
 %{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-*.pyc
-%dir %{py_puresitedir}/dbus
-%dir %{py_puresitedir}/dbus/mainloop
-%{py_puresitedir}/dbus/mainloop/pyqt5.so
 
 #------------------------------------------------------------
 
@@ -123,12 +123,14 @@ PyQt 5 core.
 Summary:	PyQt 5 dbus
 Group:		Development/KDE and Qt
 Requires:	%{name}-core = %{EVRD}
+Requires:	python3dist(dbus-python)
 
 %description dbus
 PyQt 5 dbus.
 
 %files dbus
 %{py_platsitedir}/PyQt5/QtDBus.so
+%{py_platsitedir}/dbus/mainloop/pyqt5.so
 
 #------------------------------------------------------------
 

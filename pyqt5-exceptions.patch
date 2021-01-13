@@ -1,0 +1,12 @@
+diff -up PyQt5-5.15.2/configure.py.omv~ PyQt5-5.15.2/configure.py
+--- PyQt5-5.15.2/configure.py.omv~	2021-01-13 22:16:39.222768105 +0100
++++ PyQt5-5.15.2/configure.py	2021-01-13 22:17:01.044069233 +0100
+@@ -2720,7 +2720,7 @@ def generate_module_makefile(target_conf
+ 
+     # Note some version of Qt5 (probably incorrectly) implements
+     # 'plugin_bundle' instead of 'plugin' so we specify both.
+-    pro_lines.append('CONFIG += warn_on exceptions_off %s' % ('staticlib hide_symbols' if target_config.static else 'plugin plugin_bundle'))
++    pro_lines.append('CONFIG += warn_on %s' % ('staticlib hide_symbols' if target_config.static else 'plugin plugin_bundle'))
+ 
+     pro_add_qt_dependencies(target_config, metadata, pro_lines)
+ 
