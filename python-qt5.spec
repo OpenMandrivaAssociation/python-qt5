@@ -15,9 +15,6 @@ Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
-# Don't pass -fno-exceptions -- that breaks calibre
-# and doesn't really help much with compilers from this century
-Patch1:		pyqt5-exceptions.patch
 
 BuildRequires:	python-sip >= 5.1.0
 BuildRequires:	python-sip-qt5
@@ -591,7 +588,6 @@ PyQt 5 devel utilities.
 
 %prep
 %autosetup -n PyQt5-%{version} -p1
-exit 1
 
 %build
 python configure.py \
