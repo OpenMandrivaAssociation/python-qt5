@@ -7,7 +7,7 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.15.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -105,6 +105,7 @@ PyQt is a set of Python bindings for Trolltech's Qt application framework.
 %package core
 Summary:	PyQt 5 core
 Group:		Development/KDE and Qt
+Requires:	python-sip-qt5
 
 %description core
 PyQt 5 core.
@@ -590,6 +591,7 @@ PyQt 5 devel utilities.
 
 %prep
 %autosetup -n PyQt5-%{version} -p1
+exit 1
 
 %build
 python configure.py \
