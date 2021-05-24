@@ -1,13 +1,11 @@
-%define _enable_debug_packages %{nil}
-%define debug_package %{nil}
 %define _disable_lto 1
 %define _disable_ld_no_undefined 1
 %define major %(echo %{version} |cut -d. -f1-2)
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.15.2
-Release:	3
+Version:	5.15.4
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -36,7 +34,6 @@ BuildRequires:	pkgconfig(Qt5Location)
 BuildRequires:	pkgconfig(Qt5Multimedia)
 BuildRequires:	pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:	pkgconfig(Qt5Network)
-BuildRequires:	pkgconfig(Qt5NetworkAuth)
 BuildRequires:	pkgconfig(Qt5Nfc)
 BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Positioning)
@@ -194,19 +191,6 @@ PyQt 5 network.
 
 %files network
 %{py_platsitedir}/PyQt5/QtNetwork.abi3.so
-
-#------------------------------------------------------------
-
-%package networkauth
-Summary:	PyQt 5 network authentication
-Group:		Development/KDE and Qt
-Requires:	%{name}-network = %{EVRD}
-
-%description networkauth
-PyQt 5 network authentication.
-
-%files networkauth
-%{py_platsitedir}/PyQt5/QtNetworkAuth.abi3.so
 
 #------------------------------------------------------------
 
@@ -579,6 +563,7 @@ PyQt 5 devel utilities.
 %{py_platsitedir}/PyQt5-*.dist-info
 %{_libdir}/qt5/plugins/PyQt5/libpyqt5qmlplugin.so
 %{_libdir}/qt5/plugins/designer/libpyqt5.so
+%{_datadir}/sip/PyQt5
 
 #------------------------------------------------------------
 
@@ -610,3 +595,7 @@ rm -rf	\
 	 %{buildroot}%{_datadir}/sip/PyQt5/QtAndroidExtras \
 	 %{buildroot}%{_datadir}/sip/PyQt5/QtMacExtras \
 	 %{buildroot}%{_datadir}/sip/PyQt5/QtWinExtras
+
+# Compatibility with sip 4.x
+mkdir -p %{buildroot}%{_datadir}/sip
+ln -s %{python_sitearch}/PyQt5/bindings %{buildroot}%{_datadir}/sip/PyQt5
