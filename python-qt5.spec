@@ -5,7 +5,7 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.15.4
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -109,8 +109,6 @@ PyQt 5 core.
 %{py_platsitedir}/PyQt5/Qt.abi3.so
 %{py_platsitedir}/PyQt5/QtCore.abi3.so
 %{py_platsitedir}/PyQt5/__init__.py
-%dir %{py_platsitedir}/PyQt5/__pycache__
-%{py_platsitedir}/PyQt5/__pycache__/__init__.cpython-*.pyc
 
 #------------------------------------------------------------
 
@@ -555,9 +553,6 @@ PyQt 5 devel utilities.
 %{py_platsitedir}/PyQt5/pylupdate.abi3.so
 %{py_platsitedir}/PyQt5/pyrcc.abi3.so
 %{py_platsitedir}/PyQt5/uic
-# Contains only the cache files for pyrcc, pylupdate
-%{py_platsitedir}/PyQt5/__pycache__/pyrcc_main.cpython-*.pyc
-%{py_platsitedir}/PyQt5/__pycache__/pylupdate_main.cpython-*.pyc
 %{py_platsitedir}/PyQt5/pylupdate_main.py
 %{py_platsitedir}/PyQt5/pyrcc_main.py
 %{py_platsitedir}/PyQt5-*.dist-info
