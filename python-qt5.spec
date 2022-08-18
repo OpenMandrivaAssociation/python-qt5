@@ -5,7 +5,7 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.15.6
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -14,7 +14,7 @@ Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
 
-BuildRequires:	python-sip >= 5.1.0
+BuildRequires:	python-sip >= 6.6.2
 BuildRequires:	python-sip-qt5
 BuildRequires:	python-qt-builder
 BuildRequires:	qmake5
