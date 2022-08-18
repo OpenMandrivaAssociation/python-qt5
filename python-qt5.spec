@@ -14,7 +14,7 @@ Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
 
-BuildRequires:	python-sip5 >= 5.1.0
+BuildRequires:	python-sip >= 5.1.0
 BuildRequires:	python-sip-qt5
 BuildRequires:	python-qt-builder
 BuildRequires:	qmake5
