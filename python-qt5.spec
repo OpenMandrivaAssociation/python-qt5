@@ -109,7 +109,7 @@ PyQt 5 core.
 %{py_platsitedir}/PyQt5/Qt.abi3.so
 %{py_platsitedir}/PyQt5/QtCore.abi3.so
 %{py_platsitedir}/PyQt5/__init__.py
-P%{py_platsitedir}/yQt5/bindings/QtCore/pyqt-gpl.sip5
+%{py_platsitedir}/yQt5/bindings/QtCore/pyqt-gpl.sip5
 
 #------------------------------------------------------------
 
