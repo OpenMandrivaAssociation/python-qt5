@@ -9,13 +9,12 @@ Release:	3
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
-# Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
-Source0:        https://files.pythonhosted.org/packages/3b/27/fd81188a35f37be9b3b4c2db1654d9439d1418823916fe702ac3658c9c41/PyQt5-5.15.6.tar.gz
+Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
 
-BuildRequires:	python-sip >= 5.5.0
+BuildRequires:	python-sip >= 5.1.0
 BuildRequires:	python-sip-qt5
 BuildRequires:	python-qt-builder
 BuildRequires:	qmake5
@@ -110,6 +109,7 @@ PyQt 5 core.
 %{py_platsitedir}/PyQt5/Qt.abi3.so
 %{py_platsitedir}/PyQt5/QtCore.abi3.so
 %{py_platsitedir}/PyQt5/__init__.py
+P%{py_platsitedir}/yQt5/bindings/QtCore/pyqt-gpl.sip5
 
 #------------------------------------------------------------
 
