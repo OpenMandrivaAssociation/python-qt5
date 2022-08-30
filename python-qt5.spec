@@ -4,8 +4,8 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.15.6
-Release:	3
+Version:	5.15.7
+Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		http://www.riverbankcomputing.co.uk/software/pyqt/intro
@@ -546,9 +546,9 @@ Requires:	qt5-designer
 PyQt 5 devel utilities.
 
 %files devel
-/usr/bin/pylupdate5
-/usr/bin/pyrcc5
-/usr/bin/pyuic5
+%{_bindir}/pylupdate5
+%{_bindir}/pyrcc5
+%{_bindir}/pyuic5
 %{py_platsitedir}/PyQt5/bindings/*/*.sip
 %{py_platsitedir}/PyQt5/bindings/*/*.toml
 %{py_platsitedir}/PyQt5/pylupdate.abi3.so
