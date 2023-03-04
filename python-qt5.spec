@@ -4,7 +4,7 @@
 
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
-Version:	5.15.7
+Version:	5.15.8
 Release:	1
 License:	GPLv2+
 Group:		Development/KDE and Qt
