@@ -107,7 +107,7 @@ PyQt 5 core.
 
 %files core
 %dir %{py_platsitedir}/PyQt5
-%{py_platsitedir}/PyQt5-*.dist-info
+%{py_platsitedir}/pyqt5-*.dist-info
 %{py_platsitedir}/PyQt5/Qt.abi3.so
 %{py_platsitedir}/PyQt5/QtCore.abi3.so
 %{py_platsitedir}/PyQt5/__init__.py
