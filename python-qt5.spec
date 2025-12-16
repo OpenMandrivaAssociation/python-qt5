@@ -566,6 +566,7 @@ PyQt 5 devel utilities.
 
 %prep
 %autosetup -n PyQt5-%{version} -p1
+export PATH=%{_libdir}/qt5/bin:${PATH}
 sip-build \
 	--no-make \
 	--confirm-license \
@@ -573,10 +574,11 @@ sip-build \
 find . -name Makefile |xargs sed -i -e 's,-L/usr/lib64,,g;s,-L/usr/lib,,g;s,-flto,-fno-lto,g'
 
 %build
+export PATH=%{_libdir}/qt5/bin:${PATH}
 %make_build -C build
 
-
 %install
+export PATH=%{_libdir}/qt5/bin:${PATH}
 %make_install -C build INSTALL_ROOT=%{buildroot}
 
 rm -rf %{buildroot}%{python_sitearch}/PyQt5/uic/port_v2
