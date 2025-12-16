@@ -18,6 +18,7 @@ BuildRequires:	python-sip >= 5.1.0
 BuildRequires:	python-sip-qt5
 BuildRequires:	python-qt-builder
 BuildRequires:	qmake5
+BuildRequires:	make
 BuildRequires:	qt5-qtbase-macros
 BuildRequires:	glibc-devel
 BuildRequires:	sed
