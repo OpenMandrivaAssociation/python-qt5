@@ -109,8 +109,8 @@ PyQt 5 core.
 %files core
 %dir %{py_platsitedir}/PyQt5
 %{py_platsitedir}/pyqt5-*.dist-info
-%{py_platsitedir}/PyQt5/Qt.abi3.so
-%{py_platsitedir}/PyQt5/QtCore.abi3.so
+%{py_platsitedir}/PyQt5/Qt.abi3*.so
+%{py_platsitedir}/PyQt5/QtCore.abi3*.so
 %{py_platsitedir}/PyQt5/__init__.py
 %{py_platsitedir}/PyQt5/bindings/QtCore/pyqt-gpl.sip5
 
@@ -126,8 +126,8 @@ Requires:	python%{pyver}dist(dbus-python)
 PyQt 5 dbus.
 
 %files dbus
-%{py_platsitedir}/PyQt5/QtDBus.abi3.so
-%{py_platsitedir}/dbus/mainloop/pyqt5.abi3.so
+%{py_platsitedir}/PyQt5/QtDBus.abi3*.so
+%{py_platsitedir}/dbus/mainloop/pyqt5.abi3*.so
 
 #------------------------------------------------------------
 
@@ -140,7 +140,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 designer.
 
 %files designer
-%{py_platsitedir}/PyQt5/QtDesigner.abi3.so
+%{py_platsitedir}/PyQt5/QtDesigner.abi3*.so
 
 #------------------------------------------------------------
 
@@ -153,7 +153,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 bluetooth.
 
 %files bluetooth
-%{py_platsitedir}/PyQt5/QtBluetooth.abi3.so
+%{py_platsitedir}/PyQt5/QtBluetooth.abi3*.so
 
 #------------------------------------------------------------
 
@@ -166,7 +166,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 enginio (cloud storage).
 
 %files enginio
-%{py_platsitedir}/PyQt5/Enginio.abi3.so
+%{py_platsitedir}/PyQt5/Enginio.abi3*.so
 
 #------------------------------------------------------------
 
@@ -179,7 +179,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 gui.
 
 %files gui
-%{py_platsitedir}/PyQt5/QtGui.abi3.so
+%{py_platsitedir}/PyQt5/QtGui.abi3*.so
 
 #------------------------------------------------------------
 
@@ -192,7 +192,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 network.
 
 %files network
-%{py_platsitedir}/PyQt5/QtNetwork.abi3.so
+%{py_platsitedir}/PyQt5/QtNetwork.abi3*.so
 
 #------------------------------------------------------------
 
@@ -205,7 +205,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 nfc.
 
 %files nfc
-%{py_platsitedir}/PyQt5/QtNfc.abi3.so
+%{py_platsitedir}/PyQt5/QtNfc.abi3*.so
 
 #------------------------------------------------------------
 
@@ -218,7 +218,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 help.
 
 %files help
-%{py_platsitedir}/PyQt5/QtHelp.abi3.so
+%{py_platsitedir}/PyQt5/QtHelp.abi3*.so
 
 #------------------------------------------------------------
 
@@ -231,7 +231,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 location.
 
 %files location
-%{py_platsitedir}/PyQt5/QtLocation.abi3.so
+%{py_platsitedir}/PyQt5/QtLocation.abi3*.so
 
 #------------------------------------------------------------
 
@@ -244,7 +244,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 multimedia.
 
 %files multimedia
-%{py_platsitedir}/PyQt5/QtMultimedia.abi3.so
+%{py_platsitedir}/PyQt5/QtMultimedia.abi3*.so
 
 #------------------------------------------------------------
 
@@ -257,7 +257,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 multimediawidgets.
 
 %files multimediawidgets
-%{py_platsitedir}/PyQt5/QtMultimediaWidgets.abi3.so
+%{py_platsitedir}/PyQt5/QtMultimediaWidgets.abi3*.so
 
 #------------------------------------------------------------
 
@@ -270,8 +270,8 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 opengl.
 
 %files opengl
-%{py_platsitedir}/PyQt5/QtOpenGL.abi3.so
-%{py_platsitedir}/PyQt5/_QOpenGLFunctions_*.abi3.so
+%{py_platsitedir}/PyQt5/QtOpenGL.abi3*.so
+%{py_platsitedir}/PyQt5/_QOpenGLFunctions_*.abi3*.so
 
 #------------------------------------------------------------
 
@@ -284,7 +284,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 positioning.
 
 %files positioning
-%{py_platsitedir}/PyQt5/QtPositioning.abi3.so
+%{py_platsitedir}/PyQt5/QtPositioning.abi3*.so
 
 #------------------------------------------------------------
 
@@ -297,7 +297,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 printsupport
 
 %files printsupport
-%{py_platsitedir}/PyQt5/QtPrintSupport.abi3.so
+%{py_platsitedir}/PyQt5/QtPrintSupport.abi3*.so
 
 #------------------------------------------------------------
 
@@ -310,7 +310,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 qml.
 
 %files qml
-%{py_platsitedir}/PyQt5/QtQml.abi3.so
+%{py_platsitedir}/PyQt5/QtQml.abi3*.so
 
 #------------------------------------------------------------
 
@@ -323,7 +323,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 quick.
 
 %files quick
-%{py_platsitedir}/PyQt5/QtQuick.abi3.so
+%{py_platsitedir}/PyQt5/QtQuick.abi3*.so
 
 #------------------------------------------------------------
 
@@ -336,7 +336,7 @@ Requires:	%{name}-quick = %{EVRD}
 PyQt 5 quickwidgets.
 
 %files quickwidgets
-%{py_platsitedir}/PyQt5/QtQuickWidgets.abi3.so
+%{py_platsitedir}/PyQt5/QtQuickWidgets.abi3*.so
 
 
 #------------------------------------------------------------
@@ -350,7 +350,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 sensors.
 
 %files sensors
-%{py_platsitedir}/PyQt5/QtSensors.abi3.so
+%{py_platsitedir}/PyQt5/QtSensors.abi3*.so
 
 #------------------------------------------------------------
 
@@ -363,7 +363,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 serialport.
 
 %files serialport
-%{py_platsitedir}/PyQt5/QtSerialPort.abi3.so
+%{py_platsitedir}/PyQt5/QtSerialPort.abi3*.so
 
 #------------------------------------------------------------
 
@@ -376,7 +376,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 sql.
 
 %files sql
-%{py_platsitedir}/PyQt5/QtSql.abi3.so
+%{py_platsitedir}/PyQt5/QtSql.abi3*.so
 
 #------------------------------------------------------------
 
@@ -389,7 +389,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 svg.
 
 %files svg
-%{py_platsitedir}/PyQt5/QtSvg.abi3.so
+%{py_platsitedir}/PyQt5/QtSvg.abi3*.so
 
 #------------------------------------------------------------
 
@@ -402,7 +402,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 test.
 
 %files test
-%{py_platsitedir}/PyQt5/QtTest.abi3.so
+%{py_platsitedir}/PyQt5/QtTest.abi3*.so
 
 #------------------------------------------------------------
 
@@ -415,7 +415,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 Text to Speech.
 
 %files text2speech
-%{py_platsitedir}/PyQt5/QtTextToSpeech.abi3.so
+%{py_platsitedir}/PyQt5/QtTextToSpeech.abi3*.so
 
 #------------------------------------------------------------
 
@@ -428,7 +428,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 webchannel.
 
 %files webchannel
-%{py_platsitedir}/PyQt5/QtWebChannel.abi3.so
+%{py_platsitedir}/PyQt5/QtWebChannel.abi3*.so
 
 #------------------------------------------------------------
 
@@ -441,7 +441,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 remoteobjects.
 
 %files remoteobjects
-%{py_platsitedir}/PyQt5/QtRemoteObjects.abi3.so
+%{py_platsitedir}/PyQt5/QtRemoteObjects.abi3*.so
 
 #------------------------------------------------------------
 
@@ -454,7 +454,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 webkit.
 
 %files webkit
-%{py_platsitedir}/PyQt5/QtWebKit.abi3.so
+%{py_platsitedir}/PyQt5/QtWebKit.abi3*.so
 
 #------------------------------------------------------------
 
@@ -467,7 +467,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 webkitwidgets.
 
 %files webkitwidgets
-%{py_platsitedir}/PyQt5/QtWebKitWidgets.abi3.so
+%{py_platsitedir}/PyQt5/QtWebKitWidgets.abi3*.so
 
 #------------------------------------------------------------
 
@@ -480,7 +480,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 websockets.
 
 %files websockets
-%{py_platsitedir}/PyQt5/QtWebSockets.abi3.so
+%{py_platsitedir}/PyQt5/QtWebSockets.abi3*.so
 
 
 #------------------------------------------------------------
@@ -494,7 +494,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 widgets.
 
 %files widgets
-%{py_platsitedir}/PyQt5/QtWidgets.abi3.so
+%{py_platsitedir}/PyQt5/QtWidgets.abi3*.so
 
 #------------------------------------------------------------
 
@@ -507,7 +507,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 xml.
 
 %files xml
-%{py_platsitedir}/PyQt5/QtXml.abi3.so
+%{py_platsitedir}/PyQt5/QtXml.abi3*.so
 
 
 #------------------------------------------------------------
@@ -522,7 +522,7 @@ Requires:	%{name}-xml = %{EVRD}
 PyQt 5 xmlpatterns.
 
 %files xmlpatterns
-%{py_platsitedir}/PyQt5/QtXmlPatterns.abi3.so
+%{py_platsitedir}/PyQt5/QtXmlPatterns.abi3*.so
 
 #------------------------------------------------------------
 
@@ -535,7 +535,7 @@ Requires:	%{name}-core = %{EVRD}
 PyQt 5 x11extras.
 
 %files x11extras
-%{py_platsitedir}/PyQt5/QtX11Extras.abi3.so
+%{py_platsitedir}/PyQt5/QtX11Extras.abi3*.so
 
 #------------------------------------------------------------
 
@@ -554,8 +554,8 @@ PyQt 5 devel utilities.
 %{_bindir}/pyuic5
 %{py_platsitedir}/PyQt5/bindings/*/*.sip
 %{py_platsitedir}/PyQt5/bindings/*/*.toml
-%{py_platsitedir}/PyQt5/pylupdate.abi3.so
-%{py_platsitedir}/PyQt5/pyrcc.abi3.so
+%{py_platsitedir}/PyQt5/pylupdate.abi3*.so
+%{py_platsitedir}/PyQt5/pyrcc.abi3*.so
 %{py_platsitedir}/PyQt5/uic
 %{py_platsitedir}/PyQt5/pylupdate_main.py
 %{py_platsitedir}/PyQt5/pyrcc_main.py
