@@ -5,18 +5,19 @@
 Summary:	Set of Python bindings for Trolltech's Qt application framework
 Name:		python-qt5
 Version:	5.15.11
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Development/KDE and Qt
 Url:		https://www.riverbankcomputing.co.uk/software/pyqt/intro
 Source0:	https://files.pythonhosted.org/packages/source/P/PyQt5/PyQt5-%{version}.tar.gz
+Patch0:		python-qt5-5.15.11-pyweakref.patch
 #Patch1:		PyQt5_gpl-5.6-dbus_ftbfs.patch
 # support newer Qt5 releases than 5.9.3/5.10.0
 #Patch1:		PyQt5-Timeline.patch
 
-BuildRequires:	python-sip >= 5.1.0
-BuildRequires:	python-sip-qt5
-BuildRequires:	python-qt-builder
+BuildRequires:	python-sip >= 6.17
+BuildRequires:	python-sip-qt5 >= 12.20.0
+BuildRequires:	python%{pyver}dist(pyqt-builder) >= 1.20
 BuildRequires:	qmake5
 BuildRequires:	make
 BuildRequires:	qt5-qtbase-macros
@@ -100,7 +101,7 @@ PyQt is a set of Python bindings for Trolltech's Qt application framework.
 %package core
 Summary:	PyQt 5 core
 Group:		Development/KDE and Qt
-Requires:	python-sip-qt5
+Requires:	python-sip-qt5 >= 12.20.0
 
 %description core
 PyQt 5 core.
@@ -119,7 +120,7 @@ PyQt 5 core.
 Summary:	PyQt 5 dbus
 Group:		Development/KDE and Qt
 Requires:	%{name}-core = %{EVRD}
-Requires:	python3dist(dbus-python)
+Requires:	python%{pyver}dist(dbus-python)
 
 %description dbus
 PyQt 5 dbus.
